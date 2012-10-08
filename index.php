@@ -1,7 +1,7 @@
 <?php
 // constants defined here.
 session_start();
-error_reporting(5);
+// error_reporting(5);
 
 // define ('ROOT', $_SERVER['DOCUMENT_ROOT'] . '/fly/');
 define ('SERVER_NAME', $_SERVER['SERVER_NAME']);
@@ -18,4 +18,5 @@ $uri = $_SERVER['PATH_INFO'];
 Registry::set('uri', $uri);
 
 Router::dispatch();
+
 ?>
