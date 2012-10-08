@@ -1,5 +1,5 @@
-fly
-===
+flyPHP
+======
 
 Fly MVC framework for PHP
 
