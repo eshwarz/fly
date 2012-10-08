@@ -15,7 +15,13 @@
 		<div class="container container_pad">
 			<div class="paper">
 				<div class="p10">
-					{{yield}}
+					<?php
+echo $play;
+echo $title;
+echo "<hr/>";
+echo $content;
+
+?>
 				</div>	
 			</div>
 		</div>

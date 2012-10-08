@@ -3,14 +3,20 @@
 class HomeController extends ApplicationController {
 
 	public function index() {
-		View::render(array(
-			'controller' => 'home',
-			'action' => 'index',
-			'params' => array(
-									'title' => 'Try Fly',
-									'content' => 'We flied with PHP'
-								)
+
+		View::render(array('view' => 'index',
+			'locals' => array(
+												'title' => 'Fly with PHP',
+												'content' => 'We flied with PHP'
+											)
 		));
+
+		// View::render(array('controller' => 'home', 'action' => 'index',
+		// 	'locals' => array(
+		// 										'title' => 'Fly with PHP',
+		// 										'content' => 'We flied with PHP'
+		// 									)
+		// ));
 	}
 
 }

@@ -14,8 +14,6 @@ class Request
 			
 			if (is_readable($controllerFile))
 				require_once $controllerFile;
-			else
-				echo "<h3>" . $controller . '_controller.php does not exist.' . "</h3>";
 
 			$class = ucfirst($controller) . 'Controller';
 			if (class_exists($class)) {
@@ -24,10 +22,10 @@ class Request
 					call_user_func_array(array($instance, $action), $params);
 				}
 				else
-					echo $class . '::' . $action . ' cannot be called.';
+					Fly::helper('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called. The function might not exists!');
 			}
 			else
-				echo $class . ' does not exists.';
+				Fly::helper('Controller error', '<b>' . $class . '</b> does not exists.');
 		}
 	}
 

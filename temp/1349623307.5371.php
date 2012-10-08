@@ -15,7 +15,7 @@
 		<div class="container container_pad">
 			<div class="paper">
 				<div class="p10">
-					{{yield}}
+					
 				</div>	
 			</div>
 		</div>
