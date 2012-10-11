@@ -12,7 +12,7 @@ define ('CSS_PATH', 'http://' . SERVER_NAME . '/fly/app/assets/stylesheets/');
 define ('JS_PATH', 'http://' . SERVER_NAME . '/fly/app/assets/javascripts/');
 require_once 'config/fly.php';
 
-// debug();
+debug();
 
 $uri = $_SERVER['PATH_INFO'];
 Registry::set('uri', $uri);

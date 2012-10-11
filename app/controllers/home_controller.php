@@ -4,19 +4,15 @@ class HomeController extends ApplicationController {
 
 	public function index() {
 
+		$posts = Post::all();
+
 		View::render(array('view' => 'index',
 			'locals' => array(
 												'title' => 'Fly with PHP',
-												'content' => 'We flied with PHP'
+												'content' => 'We flied with PHP',
+												'posts' => $posts
 											)
 		));
-
-		// View::render(array('controller' => 'home', 'action' => 'index',
-		// 	'locals' => array(
-		// 										'title' => 'Fly with PHP',
-		// 										'content' => 'We flied with PHP'
-		// 									)
-		// ));
 	}
 
 }

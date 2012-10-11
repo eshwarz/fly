@@ -51,10 +51,16 @@ class Router {
 				Fly::helper('Routing Error', 'No route matches for <b>/' . $request_uri[0] . '</b>');
 			}
 			else {
+				static::$route_set = 1;
 				static::$_called_action = $action = $request_uri[1];
 				$params = array_slice($request_uri, 2);
 				Request::passRequest($controller, $action, $params);
 			}
+		}
+
+		// case 4: no root specified and viewing project for the first time.
+		if (empty(static::$route_set)) {
+			Fly::helper('No Route for root', 'There is no route defined for root in the config/routes.php');
 		}
 	}
 

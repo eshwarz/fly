@@ -21,3 +21,7 @@ Installation Notes:
 6. In apache httpd.conf file set "AllowOverride None" to "AllowOverride All". This is makes sure that apache reads the .htaccess file in fly folder.
 
 7. Restart the apache server after the changes are made.
+
+8. Configure your database in db/connection.php
+
+9. 
