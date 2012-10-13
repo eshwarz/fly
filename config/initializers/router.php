@@ -6,6 +6,7 @@ class Router {
 	public static $route_set;
 	public static $_called_controller;
 	public static $_called_action;
+	
 	public static function match ($path, $controller_action) {
 		if (!empty($path) && !empty($controller_action)) {
 			static::$_routes[$path] = explode('#', $controller_action);
