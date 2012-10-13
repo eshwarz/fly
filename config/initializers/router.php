@@ -27,6 +27,10 @@ class Router {
 		// case 1: check if it doesnt have any url extensions attached.
 		if (empty($request_uri[0])) {
 			static::$route_set = 1;
+			if (empty(static::$_routes['root'][0])) {
+				// case: no root specified and viewing project for the first time.
+				Fly::helper('No Route for root', 'There is no route defined for root in the config/routes.php');
+			}
 			static::$_called_controller = $controller = static::$_routes['root'][0];
 			static::$_called_action = $action = static::$_routes['root'][1];
 			Request::passRequest($controller, $action);
@@ -59,10 +63,6 @@ class Router {
 			}
 		}
 
-		// case 4: no root specified and viewing project for the first time.
-		if (empty(static::$route_set)) {
-			Fly::helper('No Route for root', 'There is no route defined for root in the config/routes.php');
-		}
 	}
 
 }
