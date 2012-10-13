@@ -7,8 +7,8 @@
 		<title><?php echo $title; ?></title>
 		<?php 
 		require_once ROOT . 'app/assets/stylesheets/css.php';
-		require_once ROOT . 'app/assets/favicon/favicon.php';
 		require_once ROOT . 'app/assets/javascripts/scripts.php';
+		require_once ROOT . 'app/assets/favicon/favicon.php';
 		?>
 	</head>
 	<body>

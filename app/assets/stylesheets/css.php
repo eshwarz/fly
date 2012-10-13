@@ -1,4 +1,2 @@
-<style type="text/css">
-  @import url("<?php echo CSS_PATH; ?>default.css");
-  @import url("<?php echo CSS_PATH; ?>fly.css");
-</style>
+<link rel="stylesheet/less" type="text/css" href="<?php echo CSS_PATH; ?>default.less">
+<link rel="stylesheet/less" type="text/css" href="<?php echo CSS_PATH; ?>fly.less">

@@ -1,0 +1,1 @@
+<script src="<?php echo VENDOR_JS_PATH ?>less.js" type="text/javascript"></script>
