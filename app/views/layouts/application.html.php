@@ -12,12 +12,16 @@
 		?>
 	</head>
 	<body>
+
 		<div class="container container_pad">
-			<div class="paper">
+			<div class="paper mb20">
 				<div class="p10">
 					{{yield}}
 				</div>	
 			</div>
 		</div>
+
+		<?php View::render( array( 'partial' => 'shared/footer' ) ); ?>
+
 	</body>
 </html>

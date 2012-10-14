@@ -4,7 +4,7 @@
 		<meta name="keywords" content="fly, fly with PHP, MVC for PHP" />
 		<meta name="description" content="Eshwar's fly with PHP'" />
 		
-		<title><?php echo "Fly"; ?></title>
+		<title><?php echo "Fly PHP"; ?></title>
 		<?php 
 		require_once ROOT . 'app/assets/stylesheets/css.php';
 		require_once ROOT . 'app/assets/favicon/favicon.php';
@@ -12,5 +12,7 @@
 		?>
 	</head>
 	<body class="container">
+		{{yield}}
+		<?php View::render( array('partial' => 'shared/footer') ); ?>
 	</body>
 </html>

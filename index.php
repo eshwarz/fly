@@ -6,7 +6,6 @@ session_start();
 define ('ENV', 'development');
 define ('SERVER_NAME', $_SERVER['SERVER_NAME']);
 define ('SERVER_PATH', 'http://' . SERVER_NAME . '/fly/');
-
 define ('ROOT', str_replace('\\', '/', dirname(realpath(__FILE__))) . '/');
 define ('VIEW_PATH', dirname(realpath(__FILE__)) . '/app/views/');
 define ('ASSET_PATH', dirname(realpath(__FILE__)) . '/app/assets/');

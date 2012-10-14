@@ -1,7 +1,7 @@
-@import 'mixins.less';
+@import 'mixins';
 
 body {
-	font-family: Verdana, Arial;
+	font-family: "Helvetica Neue", Helvetica, Verdana, Arial;
 	font-size: 12px;
 	margin: 0px;
 }
@@ -24,25 +24,29 @@ body {
 	.radius(8px 8px 5px 5px);
 	.header {
 		background: #DDD;
-		color: #333;
+		.box_shadow(0px 2px 0px #444);
+		.radius(5px 5px 0px 0px);
+		.gradient(#E0E0E0, #AAAAAA);
+		color: #666;
 		padding: 5px;
 		width: 970px;
 		margin: -10px 0px 0px -10px;
 		font-weight: bold;
-		.box_shadow(0px 4px 0px #444);
-		.radius(5px 5px 0px 0px);
+		text-shadow: 1px 1px 1px #EEE;
 	}
 	.content {
 		padding-top: 10px;
+		text-shadow: 1px 1px 1px #222
 	}
 }
 
 .shadow {
-	.box_shadow(0px 0px 2px #AAA);
+	.box_shadow(0px 0px 5px #777);
 }
 
 .paper {
 	background: #DDD;
 	color: #333;
-	border: 1px solid #333;
+	border: 1px solid #BBB;
+	.radius;
 }

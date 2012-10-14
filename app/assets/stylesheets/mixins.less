@@ -4,9 +4,19 @@
 	-o-box-shadow: @value;
 	box-shadow: @value;
 }
-.radius(@value) {
+.radius(@value: 5px) {
 	-moz-border-radius: @value;
 	-webkit-border-radius: @value;
 	-o-border-radius: @value;
 	border-radius: @value;
+}
+.gradient(@start, @end) {
+	background-image:-moz-linear-gradient(top, @start, @end);
+	background-image:-ms-linear-gradient(top, @start, @end);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(@start), to(@end));
+	background-image:-webkit-linear-gradient(top, @start, @end);
+	background-image:-o-linear-gradient(top, @start, @end);
+	background-image:linear-gradient(top, @start, @end);
+	background-repeat:repeat-x;
+	filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start}', endColorstr='@{end}', GradientType=0)";
 }
