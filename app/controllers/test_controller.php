@@ -2,14 +2,23 @@
 
 class TestController extends ApplicationController {
 
-	public function other() {
+	public function index() {
 
 
-		View::render(array('controller' => 'test', 'action' => 'other',
+		View::render(array('view' => 'index',
 			'locals' => array(
-												'title' => 'Other Testing page',
-												'content' => 'balh blah blah and goes on'
+												'title' => 'Fly PHP',
+												'content' => 'This is a test page by <b>Fly PHP</b>. Delete the corresponding controller and the view file itself or it can even be kept for later reference.'
 											)
+		));
+	}
+
+	public function posts() {
+
+		// $posts = Post::all( array( 'conditions' => "message LIKE '%hi%'", 'limit' => 10 ) );
+
+		View::render(array('view' => 'posts',
+			'locals' => array('title' => 'Fly PHP', 'content' => 'We flied with PHP',	'posts' => $posts)
 		));
 	}
 

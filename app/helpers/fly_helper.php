@@ -11,6 +11,7 @@ class Fly {
 		
 		$layout_path = VIEW_PATH . 'layouts/fly.html.php';
 		View::yield( $content, $layout_path );
+		// die();
 	}
 
 }

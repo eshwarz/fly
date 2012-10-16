@@ -1,3 +1,10 @@
-<link rel="stylesheet/less" type="text/css" href="<?php echo CSS_PATH; ?>default.less">
-<link rel="stylesheet/less" type="text/css" href="<?php echo CSS_PATH; ?>fly.less">
-<link rel="stylesheet/less" type="text/css" href="<?php echo CSS_PATH; ?>footer.less">
+<?php
+// Example for including less or css
+// require_css('home');
+
+require_css('default');
+require_css('fly');
+require_css('footer');
+
+
+?>

@@ -5,7 +5,6 @@
 // Define a site root. 
 // Router::root('home#index');
 
-Router::match('welcome', 'home#index');
-Router::root('home#index');
+Router::root('test#index');
 
 ?>

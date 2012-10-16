@@ -1,1 +1,9 @@
-<script src="<?php echo VENDOR_JS_PATH; ?>less.js" type="text/javascript"></script>
+<?php
+// Example for including javascripts
+// require_js('home');
+
+require_js('less');
+require_js('jquery');
+
+
+?>

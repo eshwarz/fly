@@ -24,4 +24,42 @@ function array_to_params ($array) {
 	}
 	return $params;
 }
+
+function require_js($file) {
+	if (file_exists(ROOT . 'app/assets/javascripts/' . $file .'.js'))
+		echo '<script src="' . JS_PATH . $file . '.js" type="text/javascript"></script>';
+	else if (file_exists(ROOT . 'vendor/assets/javascripts/'. $file . '.js'))
+		echo '<script src="' . VENDOR_JS_PATH . $file . '.js" type="text/javascript"></script>';
+	else
+		Fly::helper("Invalid File: {$file}.js", $file.'.js neither found in <b>app/assets/javascripts/</b> nor in <b>vendor/assets/javascripts/</b>');
+}
+
+
+function require_css($file) {
+	$app_css = ROOT . 'app/assets/stylesheets/' . $file .'.css';
+	$app_less = ROOT . 'app/assets/stylesheets/' . $file .'.less';
+	$vendor_css = ROOT . 'vendor/assets/stylesheets/' . $file .'.css';
+	$vendor_less = ROOT . 'vendor/assets/stylesheets/' . $file .'.less';
+
+	if (file_exists($app_css))
+		echo link_css(CSS_PATH.$file.'.css');
+	else if (file_exists($app_less))
+		echo link_less(CSS_PATH.$file.'.less');
+	else if (file_exists($vendor_css))
+		echo link_css(VENDOR_CSS_PATH.$file.'.css');
+	else if (file_exists($vendor_less))
+		echo link_less(VENDOR_CSS_PATH.$file.'.less');
+	else
+		Fly::helper("Invalid File: {$file}.less or {$file}.css", $file.'.less or '.$file.'.css neither found in <b>app/assets/stylesheets/</b> nor in <b>vendor/assets/stylesheets/</b>');
+}
+
+
+
+function link_less($file) {
+	return '<link rel="stylesheet/less" type="text/css" href="'.$file.'" />';
+}
+function link_css($file) {
+	return '<link rel="stylesheet/css" type="text/css" href="'.$file.'"/>';
+}
+
 ?>
