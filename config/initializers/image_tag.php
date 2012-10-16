@@ -6,9 +6,10 @@ function image_path ($image) {
 	return $image_path.$image;
 }
 
-function image_tag ($image, $params) {
+function image_tag ($image, $params = null) {
 	$image_tag = '<img src="'.image_path($image).'" ';
-	$image_tag .= array_to_params($params);
+	if (!empty($params))
+		$image_tag .= array_to_params($params);
 	$image_tag .= '/>';
 	echo $image_tag;
 }
