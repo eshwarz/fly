@@ -1,4 +1,7 @@
 <?php
+// foreach (Router::$_routes as $route) {
+// 	define('test_path', "test/index/kkkk");
+// }
 
 class Router {
 
@@ -7,11 +10,13 @@ class Router {
 	public static $_called_controller;
 	public static $_called_action;
 	
-	public static function match ($path, $controller_action) {
+	public static function match ($path, $controller_action, $as_path = null) {
 		if (!empty($path) && !empty($controller_action)) {
 			static::$_routes[$path] = explode('#', $controller_action);
+			// defining constant for route
+			define ( $as_path.'_path', $path );
 		}
-	} 
+	}
 
 	public static function root ($controller_action) {
 		if (!empty($controller_action))

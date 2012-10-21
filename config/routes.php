@@ -6,5 +6,6 @@
 // Router::root('home#index');
 
 Router::root('test#index');
+Router::match('test_page', 'test#index', 'test');
 
 ?>

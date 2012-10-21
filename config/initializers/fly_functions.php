@@ -53,7 +53,12 @@ function require_css($file) {
 		Fly::helper("Invalid File: {$file}.less or {$file}.css", $file.'.less or '.$file.'.css neither found in <b>app/assets/stylesheets/</b> nor in <b>vendor/assets/stylesheets/</b>');
 }
 
+function link_to($text, $url, $params = array()) {
+	$link = '<a href="'.SERVER_PATH.$url.'" '.array_to_params($params).'>'.$text.'</a>';
+	echo $link;
+}
 
+// used once
 
 function link_less($file) {
 	return '<link rel="stylesheet/less" type="text/css" href="'.$file.'" />';

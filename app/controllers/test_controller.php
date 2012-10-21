@@ -4,7 +4,6 @@ class TestController extends ApplicationController {
 
 	public function index() {
 
-
 		View::render(array('view' => 'index',
 			'locals' => array(
 												'title' => 'Fly PHP',
