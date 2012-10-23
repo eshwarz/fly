@@ -1,9 +1,5 @@
-<div class="fly_header">
-	<?php image_tag('logo.png', array('width' => '50px', 'class' => 'fl ml10')); ?>
-	<h2 class="fl ml20"><?php echo $title; ?></h2>
-	<div class="clearfix"></div>
-</div>
 <?php
+View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
 
 echo $content;
 

@@ -1,0 +1,30 @@
+@import 'mixins';
+
+.fly_form {
+	.element {
+		margin-bottom: 10px;
+		label {
+			width: 40%;
+			float: left;
+			padding: 5px;
+		}
+		.input_controls {
+			float: left;
+			width: 50%;
+			input[type="text"], input[type="password"], textarea, select {
+				width: 95%;
+				padding: 5px;
+			}
+			label {
+				width: auto;
+			}
+			input[type="checkbox"], input[type="radio"] {
+				/*margin: 5px;*/
+			}
+		}
+	}
+}
+textarea {
+	font-family: "Helvetica Neue", Helvetica, Verdana, Arial;
+	font-size: 13px;
+} 

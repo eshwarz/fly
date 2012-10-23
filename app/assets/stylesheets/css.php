@@ -5,6 +5,7 @@
 require_css('default');
 require_css('fly');
 require_css('footer');
+require_css('form');
 
 
 ?>

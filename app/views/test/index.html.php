@@ -2,12 +2,9 @@
 	$active_record = "<a target='_blank' href='http://www.phpactiverecord.org/projects/main/wiki'>PHP ActiveRecord</a>";
 	$less_css = "<a target='_blank' href='http://www.lesscss.org/'>lesscss</a>";
 	$jquery = "<a target='_blank' href='http://www.jquery.com/'>jQuery</a>";
+	
+	View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
 ?>
-<div class="fly_header">
-	<?php image_tag('logo_small.png', array('width' => '50px', 'class' => 'fl ml10')); ?>
-	<h2 class="fl ml20"><?php echo $title; ?></h2>
-	<div class="clearfix"></div>
-</div>
 
 <?php	echo $content; ?>
 
@@ -44,4 +41,14 @@
 		Fly PHP uses <?php echo $jquery; ?>. Save javascripts in "app/assets/javascripts/" and include the file in "app/assets/stylesheets/scripts.php".
 	</p>
 	<p class="">Example: app/assets/javascripts/home.js</p>
+</div>
+
+<div class="mt30">
+	<h3>Some Test pages Created While Development</h3>
+	<div class="h_pad_links">
+		<?php
+			link_to ('Posts', test_posts_path);
+			link_to ('Forms', test_form_path);
+		?>
+	</div>
 </div>

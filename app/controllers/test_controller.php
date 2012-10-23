@@ -21,6 +21,10 @@ class TestController extends ApplicationController {
 		));
 	}
 
+	public function forms() {
+		View::render(array('view' => 'forms', 'locals' => array( 'title' => 'Fly PHP' )));
+	}
+
 }
 
 ?>
