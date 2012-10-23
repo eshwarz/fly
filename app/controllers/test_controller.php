@@ -22,6 +22,7 @@ class TestController extends ApplicationController {
 	}
 
 	public function forms() {
+		// redirect_to (test_path);
 		View::render(array('view' => 'forms', 'locals' => array( 'title' => 'Fly PHP' )));
 	}
 

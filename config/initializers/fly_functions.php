@@ -1,7 +1,7 @@
 <?php
 // Welcome to fly with PHP framework 
 // For the easiest way to use PHP.
-// This is an open source. Feel free to fork it at https://github.com/eshwarz/fly.git
+// This is an open source software. Feel free to fork it at http://github.com/eshwarz/fly
 
 // requiring all the files in a folder
 function require_all($destination) {
@@ -56,6 +56,10 @@ function require_css($file) {
 function link_to($text, $url, $params = array()) {
 	$link = '<a href="'.SERVER_PATH.$url.'" '.array_to_params($params).'>'.$text.'</a>';
 	echo $link;
+}
+
+function redirect_to($path) {
+	header('Location:'.SERVER_PATH.$path);
 }
 
 function humanize($str) {
