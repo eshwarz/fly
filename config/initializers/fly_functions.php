@@ -54,7 +54,7 @@ function require_css($file) {
 }
 
 function link_to($text, $url, $params = array()) {
-	$link = '<a href="'.SERVER_PATH.$url.'" '.array_to_params($params).'>'.$text.'</a>';
+	$link = '<a href="'.$url.'" '.array_to_params($params).'>'.$text.'</a>';
 	echo $link;
 }
 
