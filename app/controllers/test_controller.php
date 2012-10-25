@@ -2,6 +2,10 @@
 
 class TestController extends ApplicationController {
 
+	public function before_filter() {
+		User::authenticate( array( 'only' => array('profile') ) );
+	}
+
 	public function index() {
 
 		View::render(array('view' => 'index',
@@ -24,6 +28,10 @@ class TestController extends ApplicationController {
 	public function forms() {
 		// redirect_to (test_path);
 		View::render(array('view' => 'forms', 'locals' => array( 'title' => 'Fly PHP' )));
+	}
+
+	public function profile() {
+		View::render(array('view' => 'profile', 'locals' => array( 'title' => 'Fly PHP' )));
 	}
 
 }

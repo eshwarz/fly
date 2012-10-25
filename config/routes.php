@@ -10,5 +10,6 @@ Router::root('test#index');
 Router::match('test_page', 'test#index', 'test');
 Router::match('test_posts', 'test#posts', 'test_posts');
 Router::match('test_form', 'test#forms', 'test_form');
+Router::match('test_profile', 'test#profile', 'test_profile');
 
 ?>
