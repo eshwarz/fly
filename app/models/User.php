@@ -2,6 +2,12 @@
 
 class User extends ActiveRecord\Model {
 	
+
+	public static function genders() {
+		return array( array('Male', 1), array('Female', 2) );
+	}
+
+
 	public static function authenticate($options) {
 		
 		$flag = static::checkOptions($options);
@@ -21,8 +27,7 @@ class User extends ActiveRecord\Model {
 					$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 					$_SESSION['redirect'] = $url;
 				}
-				// redirect_to(root_path);
-				die("User not logged in! :(");
+				redirect_to(user_sign_in_path);
 			}
 
 		}

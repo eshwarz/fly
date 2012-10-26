@@ -1,12 +1,19 @@
 <?php
 
 class Form {
+	
+	public $model = 'Form';
 
-	public static function form_tag ($options) {
-		$class = isset($options['class']) ? $options['class'] : 'fly_form'; 
+	public function __construct ($model = null){
+		if (isset($model))
+			$this->model = $model;
+	}
+
+	public function form_tag ($options) {
+		$class = isset($options['class']) ? $options['class'] : 'fly_form';
 
 		if (isset($options['url'])) {
-			$form = '<form action="'.SERVER_PATH.$options['url'].'" method="'.$options['method'].'" class="'.$class.'">';
+			$form = '<form action="'.$options['url'].'" method="'.$options['method'].'" class="'.$class.'">';
 		}
 		elseif (isset($options['action'])) {
 			$controller = Router::$_called_controller;
@@ -15,15 +22,18 @@ class Form {
 			echo $form;
 	}
 
-	public static function end_form () {
+	public function end_form () {
 		echo "</form>";
 	}
 
-	public static function input ($name, $params) {
+	public function input ($name, $params) {
 		$id = isset($params['id']) ? $params['id'] : $name;
 		$type = isset($params['as']) ? $params['as'] : 'text';
 		$label = isset($params['label']) ? $params['label'] : ucwords(humanize($name));
 		
+		// making arrayed name
+		$name = $this->model."[".$name."]";
+
 		$params['id'] = $id;
 		unset($params['as']);
 
@@ -44,7 +54,7 @@ class Form {
 			$collection = $params['collection'];
 			unset($params['collection']);
 			unset($params['id']);
-			$input = '<select name="'.$name.'" '.array_to_params($params).' id="'.$name.'">';
+			$input = '<select name="'.$name.'" '.array_to_params($params).' id="'.$id.'">';
 			if ($params['prompt']) {
 				$input .= '<option value="">'.$params['prompt'].'</option>';
 			}
@@ -96,17 +106,17 @@ class Form {
 		echo $output;
 	}
 
-	public static function submit($params) {
+	public function submit($params) {
 		$output = '<input type="submit" '.array_to_params($params).' />';
 		return $output;
 	}
 
-	public static function reset($params) {
+	public function reset($params) {
 		$output = '<input type="reset" '.array_to_params($params).' />';
 		return $output;
 	}
 
-	public static function format($key, $value) {
+	public function format($key, $value) {
 		$output = '
 			<div class="element">
 				<label>'.$key.'</label>
