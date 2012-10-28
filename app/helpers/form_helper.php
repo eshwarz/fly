@@ -12,12 +12,18 @@ class Form {
 	public function form_tag ($options) {
 		$class = isset($options['class']) ? $options['class'] : 'fly_form';
 
+		$options['class'] = $class;
+
+
 		if (isset($options['url'])) {
-			$form = '<form action="'.$options['url'].'" method="'.$options['method'].'" class="'.$class.'">';
+			$url = $options['url'];
+			unset($options['url']);
+			$form = '<form action="'.$url.'" '.array_to_params($options).'>';
 		}
 		elseif (isset($options['action'])) {
 			$controller = Router::$_called_controller;
-			$form = '<form action="'.SERVER_PATH.$controller.'/'.$options['action'].'" method="'.$options['method'].'" class="'.$class.'">';
+			$options['action'] = SERVER_PATH.$controller.'/'.$options['action'];
+			$form = '<form '.array_to_params($options).'>';
 		}
 			echo $form;
 	}
@@ -30,7 +36,9 @@ class Form {
 		$id = isset($params['id']) ? $params['id'] : $name;
 		$type = isset($params['as']) ? $params['as'] : 'text';
 		$label = isset($params['label']) ? $params['label'] : ucwords(humanize($name));
-		
+		$params['label'] = $label;
+		$validate = $params['validate'];
+
 		// making arrayed name
 		$name = $this->model."[".$name."]";
 
@@ -98,7 +106,12 @@ class Form {
 
 		$output = '
 			<div class="element">
-				<label for="'.$id.'" >'.$label.'</label>
+				<label for="'.$id.'" >'.$label;
+		
+		if ($validate == 'true')
+			$output .= '<span>*</span>';
+
+		$output .= '</label>
 				<div class="input_controls">'.$input.'</div>
 				<div class="clearfix"></div>
 			</div>
@@ -119,7 +132,9 @@ class Form {
 	public function format($key, $value) {
 		$output = '
 			<div class="element">
-				<label>'.$key.'</label>
+				<label>
+					'.$key.'
+				</label>
 				<div class="input_controls">'.$value.'</div>
 				<div class="clearfix"></div>
 			</div>

@@ -49,6 +49,8 @@
 		<?php
 			link_to ('Posts', test_posts_path);
 			link_to ('Forms', test_form_path);
+			link_to ('Sign Up', new_user_path);
+			link_to ('Sign In', user_sign_in_path);
 		?>
 	</div>
 </div>

@@ -5,5 +5,6 @@
 require_js('less');
 require_js('jquery');
 
+require_js('form_validation');
 
 ?>

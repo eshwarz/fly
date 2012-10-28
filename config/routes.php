@@ -8,13 +8,17 @@
 
 Router::root('test#index');
 
+{
+	// User creation routes.
+	Router::match('sign_up', 'registrations#_new', 'new_user');
+	Router::match('registrations/create', 'registrations#create', 'create_user');
+}
 
 {
 	// user authentication routes.
 	Router::match('sign_in', 'sessions#_new', 'user_sign_in');
+	Router::match('sessions/create', 'sessions#create', 'create_user_session');
 	Router::match('sign_out', 'sessions#destroy', 'user_sign_out');
-	Router::match('sign_up', 'registrations#_new', 'new_user');
-	Router::match('registrations/create', 'registrations#create', 'create_user');
 }
 
 {
