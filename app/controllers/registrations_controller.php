@@ -12,6 +12,10 @@ class RegistrationsController extends ApplicationController {
 		// creating user with above fields
 		if ($user['password'] == $user['confirm_password']) {
 			unset($user['confirm_password']);
+
+			// one way md5 hash encription on password.
+			$user['password'] = md5($user['password']);
+			
 			User::create($user);
 			redirect_to(user_sign_in_path);
 		}
