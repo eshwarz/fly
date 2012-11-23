@@ -9,5 +9,5 @@ foreach ($fruits as $key => $fruit) {
 	View::render( array( 'partial' => 'fruit', 'locals' => array( 'fruit' => $fruit ) ) );
 }
 
-link_to('Test Page', test_path, array( 'class' => 'new_link', 'title' => 'Test Page' ));
+echo link_to('Test Page', test_path, array( 'class' => 'new_link', 'title' => 'Test Page' ));
 ?>

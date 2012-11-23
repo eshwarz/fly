@@ -3,7 +3,11 @@
 class SessionsController extends ApplicationController {
 
 	public function _new() {
-		View::render(array('view' => 'new', 'locals' => array('title' => 'Fly - Sign In')));
+		if (current_user()) {
+			redirect_to(root_path);
+		} else {
+			View::render(array('view' => 'new', 'locals' => array('title' => 'Fly - Sign In')));
+		}
 	}
 
 	public function create() {

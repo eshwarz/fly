@@ -11,6 +11,6 @@ function image_tag ($image, $params = null) {
 	if (!empty($params))
 		$image_tag .= array_to_params($params);
 	$image_tag .= '/>';
-	echo $image_tag;
+	return $image_tag;
 }
 ?>

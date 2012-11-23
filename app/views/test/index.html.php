@@ -47,10 +47,10 @@
 	<h3>Some Test pages Created While Development</h3>
 	<div class="h_pad_links">
 		<?php
-			link_to ('Posts', test_posts_path);
-			link_to ('Forms', test_form_path);
-			link_to ('Sign Up', new_user_path);
-			link_to ('Sign In', user_sign_in_path);
+		echo link_to ('Posts', test_posts_path);
+		echo link_to ('Forms', test_form_path);
+		echo link_to ('Sign Up', new_user_path);
+		echo link_to ('Sign In', user_sign_in_path);
 		?>
 	</div>
 </div>

@@ -25,11 +25,11 @@ class Form {
 			$options['action'] = SERVER_PATH.$controller.'/'.$options['action'];
 			$form = '<form '.array_to_params($options).'>';
 		}
-			echo $form;
+			return $form;
 	}
 
 	public function end_form () {
-		echo "</form>";
+		return "</form>";
 	}
 
 	public function input ($name, $params) {
@@ -116,7 +116,7 @@ class Form {
 				<div class="clearfix"></div>
 			</div>
 		';
-		echo $output;
+		return $output;
 	}
 
 	public function submit($params) {
@@ -139,7 +139,7 @@ class Form {
 				<div class="clearfix"></div>
 			</div>
 		';
-		echo $output;
+		return $output;
 	}
 }
 
