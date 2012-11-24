@@ -24,7 +24,7 @@ View::render( array( 'partial' => 'test/header', 'locals' => array( 'title' => $
 		echo $form->input( 'email', array( 'placeholder' => 'Email Address', 'validate' => 'true' ) );
 		echo $form->input( 'password', array( 'as' => 'password', 'placeholder' => 'Password', 'validate' => 'true' ) );
 		echo $form->input( 'remember', array( 'label' => '', 'as' => 'checkbox', 'collection' => array(array(' Remember', '1')) ) );
-		echo $form->format('', Form::submit(array( 'value' => 'Sign Up' )));
+		echo $form->format('', Form::submit(array( 'value' => 'Sign In' )));
 		echo $form->end_form();
 
 	?>

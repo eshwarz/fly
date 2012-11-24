@@ -13,8 +13,7 @@ class Form {
 		$class = isset($options['class']) ? $options['class'] : 'fly_form';
 
 		$options['class'] = $class;
-
-
+		
 		if (isset($options['url'])) {
 			$url = $options['url'];
 			unset($options['url']);

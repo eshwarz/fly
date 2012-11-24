@@ -10,15 +10,15 @@ View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title
 	$courses = array(array('C++', 'cpp'), array('Java', 'java', 'checked'), array('PHP', 'php'));
 
 	$form = new Form('Model');
-	$form->form_tag(array( 'url' => test_path, 'method' => 'post' ));
-		$form->input('first_name', array( 'placeholder' => 'Fill First Name' ));
-		$form->input('last_name', array( 'placeholder' => 'Fill Last Name' ));
-		$form->input('about', array( 'as' => 'textarea', 'placeholder' => 'Fill Last Name', 'label' => 'About you' ));
-		$form->input('gender', array( 'as' => 'select', 'prompt' => 'Select Gender', 'collection' => $gender ));
-		$form->input('group', array( 'as' => 'radio', 'collection' => $groups ));
-		$form->input('courses', array( 'as' => 'checkbox', 'collection' => $courses, 'stacked' => 'true' ));
+	echo $form->form_tag(array( 'url' => test_path, 'method' => 'post' ));
+		echo $form->input('first_name', array( 'placeholder' => 'Fill First Name' ));
+		echo $form->input('last_name', array( 'placeholder' => 'Fill Last Name' ));
+		echo $form->input('about', array( 'as' => 'textarea', 'placeholder' => 'Fill Last Name', 'label' => 'About you' ));
+		echo $form->input('gender', array( 'as' => 'select', 'prompt' => 'Select Gender', 'collection' => $gender ));
+		echo $form->input('group', array( 'as' => 'radio', 'collection' => $groups ));
+		echo $form->input('courses', array( 'as' => 'checkbox', 'collection' => $courses, 'stacked' => 'true' ));
 
-		$form->format( $form->reset(array('value' => 'Refresh')), $form->submit(array('value' => 'Save', 'class' => 'btn')) );		
-	$form->end_form();
+		echo $form->format( $form->reset(array('value' => 'Refresh')), $form->submit(array('value' => 'Save', 'class' => 'btn')) );		
+	echo $form->end_form();
 	?>
 </div>
