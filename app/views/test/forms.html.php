@@ -1,5 +1,5 @@
 <?php
-View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
+render ( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
 ?>
 
 <h2 class="center">Test Form</h2>
@@ -10,7 +10,7 @@ View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title
 	$courses = array(array('C++', 'cpp'), array('Java', 'java', 'checked'), array('PHP', 'php'));
 
 	$form = new Form('Model');
-	echo $form->form_tag(array( 'url' => test_path, 'method' => 'post' ));
+	echo $form->form_tag(array( 'url' => test_path ));
 		echo $form->input('first_name', array( 'placeholder' => 'Fill First Name' ));
 		echo $form->input('last_name', array( 'placeholder' => 'Fill Last Name' ));
 		echo $form->input('pass', array( 'as' => 'password', 'placeholder' => 'Password' ));

@@ -4,8 +4,7 @@ if ($_GET['email'] == 'exists') {
 	<center class="error">Email Address already exists!</center>
 	<?php
 }
-
-View::render( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title ) ) );
+render ( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title ) ) );
 ?>
 
 <h2 class="center">Sign Up</h2>
@@ -26,7 +25,7 @@ View::render( array( 'partial' => 'test/header', 'locals' => array( 'title' => $
 	?>
 
 	<?php
-	View::render(array('partial' => 'shared/authentication_links'));
+	render (array('partial' => 'shared/authentication_links'));
 	?>
 </div>
 

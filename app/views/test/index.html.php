@@ -3,7 +3,7 @@
 	$less_css = "<a target='_blank' href='http://www.lesscss.org/'>lesscss</a>";
 	$jquery = "<a target='_blank' href='http://www.jquery.com/'>jQuery</a>";
 	
-	View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
+	render ( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
 ?>
 
 <?php	echo $content; ?>

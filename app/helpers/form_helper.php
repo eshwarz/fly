@@ -17,6 +17,18 @@ class Form {
 		if (isset($options['url'])) {
 			$url = $options['url'];
 			unset($options['url']);
+
+			// default method is set to post.
+			if (!isset($options['method'])) {
+				$options['method'] = 'post';
+			}
+
+			// include multipart form data.
+			if ($options['multipart'] == true) {
+				$options['enctype'] = 'multipart/form-data';
+				unset($options['multipart']);
+			}
+
 			$form = '<form action="'.$url.'" '.array_to_params($options).'>';
 		}
 		elseif (isset($options['action'])) {
@@ -118,8 +130,8 @@ class Form {
 					<div class="clearfix"></div>
 				</div>
 			';
-			
 		}
+		
 		return $output;
 	}
 

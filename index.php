@@ -5,8 +5,8 @@ session_start();
 // default emvironment is set to development
 define ('ENV', 'development');
 define ('SERVER_NAME', $_SERVER['SERVER_NAME']);
-define ('SERVER_PATH', 'http://' . SERVER_NAME . '/');
 define ('ROOT', str_replace('\\', '/', dirname(realpath(__FILE__))) . '/');
+define ('SERVER_PATH', 'http://' . SERVER_NAME . '/');
 define ('VIEW_PATH', dirname(realpath(__FILE__)) . '/app/views/');
 define ('ASSET_PATH', dirname(realpath(__FILE__)) . '/app/assets/');
 define ('CSS_PATH', SERVER_PATH.'app/assets/stylesheets/');

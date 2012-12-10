@@ -60,6 +60,7 @@ function link_to($text, $url, $params = array()) {
 
 function redirect_to($path) {
 	header('Location:'.$path);
+	exit();
 }
 
 function humanize($str) {

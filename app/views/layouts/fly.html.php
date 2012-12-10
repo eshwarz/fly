@@ -13,6 +13,6 @@
 	</head>
 	<body class="container">
 		{{yield}}
-		<?php View::render( array('partial' => 'shared/footer') ); ?>
+		<?php render (array('partial' => 'shared/footer')); ?>
 	</body>
 </html>

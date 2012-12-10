@@ -6,7 +6,7 @@ class SessionsController extends ApplicationController {
 		if (current_user()) {
 			redirect_to(root_path);
 		} else {
-			View::render(array('view' => 'new', 'locals' => array('title' => 'Fly - Sign In')));
+			render (array('view' => 'new', 'locals' => array('title' => 'Fly - Sign In')));
 		}
 	}
 

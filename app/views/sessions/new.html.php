@@ -13,7 +13,7 @@ if ($_GET['success'] == 1) {
 ?>
 
 <?php
-View::render( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title ) ) );
+render ( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title ) ) );
 ?>
 
 <h2 class="center">Sign In</h2>
@@ -30,6 +30,6 @@ View::render( array( 'partial' => 'test/header', 'locals' => array( 'title' => $
 	?>
 
 	<?php
-	View::render(array('partial' => 'shared/authentication_links'));
+	render (array('partial' => 'shared/authentication_links'));
 	?>
 </div>
