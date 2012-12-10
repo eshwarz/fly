@@ -13,6 +13,8 @@ View::render( array( 'partial' => 'header', 'locals' => array( 'title' => $title
 	echo $form->form_tag(array( 'url' => test_path, 'method' => 'post' ));
 		echo $form->input('first_name', array( 'placeholder' => 'Fill First Name' ));
 		echo $form->input('last_name', array( 'placeholder' => 'Fill Last Name' ));
+		echo $form->input('pass', array( 'as' => 'password', 'placeholder' => 'Password' ));
+		echo $form->input('uid', array( 'as' => 'hidden', 'value' => '324368493' ));
 		echo $form->input('about', array( 'as' => 'textarea', 'placeholder' => 'Fill Last Name', 'label' => 'About you' ));
 		echo $form->input('gender', array( 'as' => 'select', 'prompt' => 'Select Gender', 'collection' => $gender ));
 		echo $form->input('group', array( 'as' => 'radio', 'collection' => $groups ));
