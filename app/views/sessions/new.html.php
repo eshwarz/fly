@@ -26,10 +26,7 @@ render ( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title
 		echo $form->input( 'remember', array( 'label' => '', 'as' => 'checkbox', 'collection' => array(array(' Remember', '1')) ) );
 		echo $form->format('', Form::submit(array( 'value' => 'Sign In' )));
 		echo $form->end_form();
-
-	?>
-
-	<?php
-	render (array('partial' => 'shared/authentication_links'));
+		
+		render (array('partial' => 'shared/authentication_links'));
 	?>
 </div>

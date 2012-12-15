@@ -14,14 +14,14 @@ class Router {
 		if (!empty($path) && !empty($controller_action)) {
 			static::$_routes[$path] = explode('#', $controller_action);
 			// defining constant for route
-			define ( $as_path.'_path', SERVER_PATH.$path );
+			define ( $as_path.'_path', '/'.$path );
 		}
 	}
 
 	public static function root ($controller_action) {
 		if (!empty($controller_action))
 			static::$_routes['root'] = explode('#', $controller_action);
-			define ( 'root_path', SERVER_PATH );
+			define ( 'root_path', '/' );
 	}
 
 	public static function dispatch () {
