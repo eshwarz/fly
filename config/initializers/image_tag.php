@@ -2,7 +2,7 @@
 // image_tag function
 
 function image_path ($image) {
-	$image_path = SERVER_PATH."app/assets/images/";
+	$image_path = "/app/assets/images/";
 	return $image_path.$image;
 }
 
