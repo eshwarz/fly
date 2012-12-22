@@ -16,7 +16,7 @@ define ('VENDOR_JS_PATH', SERVER_PATH.'vendor/assets/javascripts/');
 require_once 'config/fly.php';
 debug();
 
-$uri = $_SERVER['PATH_INFO'];
+$uri = $_SERVER['REQUEST_URI'];
 Registry::set('uri', $uri);
 
 Router::dispatch();
