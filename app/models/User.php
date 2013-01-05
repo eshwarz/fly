@@ -10,7 +10,7 @@ class User extends ActiveRecord\Model {
 	}
 
 
-	public static function authenticate($options) {
+	public static function authenticate($options = NULL) {
 		
 		$flag = static::checkOptions($options);
 		if ($flag == 1) {
@@ -49,6 +49,10 @@ class User extends ActiveRecord\Model {
 			$key = array_search($action, $options['except']);
 			if (is_bool($key))
 				$flag = 1;
+		}
+		// authentication required for all the methods in a controller if no arguments are passed.
+		elseif ($options == NULL) {
+			$flag = 1;
 		}
 		return $flag;
 	}

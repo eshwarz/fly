@@ -33,7 +33,7 @@ class Form {
 		}
 		elseif (isset($options['action'])) {
 			$controller = Router::$_called_controller;
-			$options['action'] = SERVER_PATH.$controller.'/'.$options['action'];
+			$options['action'] = '/'.$controller.'/'.$options['action'];
 			$form = '<form '.array_to_params($options).'>';
 		}
 			return $form;

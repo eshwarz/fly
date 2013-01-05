@@ -20,7 +20,7 @@ class SessionsController extends ApplicationController {
 			session_start();
 			$uid = $_SESSION['fly_user'] = $user->id;
 			$_SESSION['fly_timezone'] = 123;
-			if ($credentials['remember'][0] == 1)
+			if ($credentials['remember'][0] == '1')
 			{
 				setcookie("fly_user", $uid, time()+60*60*24*30, "/");
 				setcookie("fly_timezone", $password, time()+60*60*24*30, "/");
