@@ -18,11 +18,7 @@ function require_all($destination) {
 
 // array to parameters
 function array_to_params ($array) {
-	$params = ' ';
-	foreach ($array as $key => $value) {
-		$params .= $key.'="'.$value.'" ';
-	}
-	return $params;
+	return Html::array_to_params($array);
 }
 
 function require_js($file) {
@@ -54,13 +50,15 @@ function require_css($file) {
 }
 
 function link_to($text, $url, $params = array()) {
-	$link = '<a href="'.$url.'" '.array_to_params($params).'>'.$text.'</a>';
-	return $link;
+	return Html::link_to($text, $url, $params);
 }
 
 function redirect_to($path) {
-	header('Location:'.$path);
-	exit();
+	return Html::redirect_to($path);
+}
+
+function content_tag($tag, $content, $options = array()) {
+	return Html::content_tag($tag, $content, $options);
 }
 
 function humanize($str) {
@@ -83,13 +81,13 @@ function escape_data ($data)
 	return mysql_real_escape_string(trim($data), $con);
 }
 
+
 // used once
 
 function link_less($file) {
 	return '<link rel="stylesheet/less" type="text/css" href="'.$file.'" />';
 }
+
 function link_css($file) {
 	return '<link rel="stylesheet/css" type="text/css" href="'.$file.'"/>';
 }
-
-?>

@@ -68,7 +68,13 @@ class Router {
 				Request::passRequest($controller, $action, $params);
 			}
 		}
+	}
 
+	// get route by constant
+	public static function route_by_constant($constant) {
+		$url_string = str_replace('_path', '', $constant);
+		$url = str_replace('_', '/', $url_string);
+		return '/'.$url;
 	}
 
 }

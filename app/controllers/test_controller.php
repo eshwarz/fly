@@ -36,6 +36,11 @@ class TestController extends ApplicationController {
 		render (array('view' => 'profile', 'locals' => array( 'title' => 'Fly PHP' )));
 	}
 
+	public function helpers() {
+		$locals['title'] = 'Fly PHP - Usage of Helpers';
+		render(array('view' => 'helpers', 'locals' => $locals));
+	}
+
 }
 
 ?>

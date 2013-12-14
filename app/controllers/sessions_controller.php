@@ -6,7 +6,7 @@ class SessionsController extends ApplicationController {
 		if (current_user()) {
 			redirect_to(root_path);
 		} else {
-			render (array('view' => 'new', 'locals' => array('title' => 'Fly - Sign In')));
+			render (array('view' => 'new', 'locals' => array('title' => 'Pavsesh - Sign In')));
 		}
 	}
 
@@ -18,14 +18,14 @@ class SessionsController extends ApplicationController {
 			
 			// authenticating user
 			session_start();
-			$uid = $_SESSION['fly_user'] = $user->id;
-			$_SESSION['fly_timezone'] = 123;
+			$uid = $_SESSION[USER_SESSION_KEY] = $user->id;
+			$_SESSION[USER_TIMEZONE_KEY] = 123;
 			if ($credentials['remember'][0] == '1')
 			{
-				setcookie("fly_user", $uid, time()+60*60*24*30, "/");
-				setcookie("fly_timezone", $password, time()+60*60*24*30, "/");
+				setcookie("pavsesh_user", $uid, time()+60*60*24*30, "/");
+				setcookie("pavsesh_timezone", $password, time()+60*60*24*30, "/");
 			}
-			redirect_to(root_path);
+			redirect_to(blog_path);
 		} else {
 			redirect_to(user_sign_in_path.'?failed=1');
 		}
@@ -33,14 +33,14 @@ class SessionsController extends ApplicationController {
 	}
 
 	public function destroy() {
-		if (isset($_COOKIE['fly_user']) && isset($_COOKIE['fly_timezone']))
+		if (isset($_COOKIE[USER_SESSION_KEY]) && isset($_COOKIE[USER_TIMEZONE_KEY]))
 		{
-			setcookie("fly_user", "", time()-60*60*24*30, "/");
-			setcookie("fly_timezone", "", time()-60*60*24*30, "/");
+			setcookie("pavsesh_user", "", time()-60*60*24*30, "/");
+			setcookie("pavsesh_timezone", "", time()-60*60*24*30, "/");
 		}
 		
-		unset($_SESSION['fly_user']);
-		unset($_SESSION['fly_timezone']);
+		unset($_SESSION[USER_SESSION_KEY]);
+		unset($_SESSION[USER_TIMEZONE_KEY]);
 		
 		session_destroy();
 		redirect_to(root_path);

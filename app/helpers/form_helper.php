@@ -135,7 +135,7 @@ class Form {
 		return $output;
 	}
 
-	public function submit($params) {
+	public static function submit($params) {
 		$output = '<input type="submit" '.array_to_params($params).' />';
 		return $output;
 	}
