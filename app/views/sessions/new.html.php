@@ -13,7 +13,7 @@ if ($_GET['success'] == 1) {
 ?>
 
 <h2 class="center">Sign In</h2>
-<div style="width: 500px; margin: auto;">
+<div style="width: 400px; margin: auto;">
 	<?php
 		$form = new Form('User');
 		echo $form->form_tag( array( 'action' => 'create', 'method' => 'POST', 'validate' => 'true', 'stacked' => true ));

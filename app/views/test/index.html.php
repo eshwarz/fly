@@ -4,7 +4,7 @@
 	$jquery = "<a target='_blank' href='http://www.jquery.com/'>jQuery</a>";	
 ?>
 
-<?php	echo $content; ?>
+<?php	echo $note; ?>
 
 <div class="mt30">
 	<h3>Step 1: Create Controller</h3>

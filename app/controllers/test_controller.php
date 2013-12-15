@@ -8,7 +8,7 @@ class TestController extends ApplicationController {
 
 	public function index() {
 		$locals['title'] = 'Fly PHP';
-		$locals['content'] = 'This is a test page by <b>Fly PHP</b>. Delete the corresponding controller and the view file itself or it can even be kept for later reference.';
+		$locals['note'] = b('Note:') . ' This is a test page by '. b('Fly PHP') . '. Delete the corresponding controller and the view file itself or it can even be kept for later reference.';
 		render(array('view' => 'index', 'locals' => $locals));
 	}
 

@@ -1,5 +1,14 @@
 @import 'mixins';
 
+// disabling yellow background on chrome autofill
+input:-webkit-autofill {
+	box-shadow: 0 0 5px #DDD inset, 0 0 0 1000px white inset;
+}
+// disabling outline style
+input:focus, select:focus {
+	outline-style: none;
+}
+
 .fly_form {
 	.element {
 		margin-bottom: 10px;
@@ -30,7 +39,7 @@
 	/* Stacked form */
 	&.stacked {
 		.radius(10px);
-		.box_shadow(0 0 30px #AAA);
+		// .box_shadow(0 0 30px #AAA);
 		.element {
 			margin: 0;
 			padding: 0;
@@ -48,6 +57,14 @@
 				input[type="text"], input[type="password"], textarea {
 					padding: 15px;
 					box-sizing: border-box;
+					.box_shadow(0 0 5px #DDD inset);
+				}
+				select {
+					.box_shadow(0 0 5px #DDD inset);
+				}
+				textarea {
+					resize: vertical;
+					margin: 0px auto -4px;
 				}
 
 				/* button CSS */
@@ -57,11 +74,19 @@
 					background: #4787ED;
 					border: 1px solid #2A69CE;
 					font-weight: bold;
+					text-shadow: 1px 1px 1px #0441A2;
+					.box_shadow(0 2px 1px #73A3F0 inset);
+				}
+				input[type="submit"]:active, input[type="button"]:active {
+					background: #3776DD;
+					.box_shadow(0 2px 1px #5A92EE inset);
 				}
 				input[type="submit"][disabled="disabled"], input[type="button"][disabled="disabled"] {
 					cursor: auto;
 					border: 1px solid #AAA;
 					background: #BBB;
+					text-shadow: 1px 1px 1px #777;
+					.box_shadow(none);
 				}
 
 				/* labels inside input controls are visible until custom inputs are implemented (checkboxes anf radio) */
@@ -72,6 +97,7 @@
 					border: 1px solid #CCC;
 					background: #FFF;
 					box-sizing: border-box;
+					.box_shadow(0 0 5px #DDD inset);
 					display: block;
 					input {
 						margin: auto 5px auto auto;
