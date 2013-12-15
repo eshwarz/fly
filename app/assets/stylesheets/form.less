@@ -26,8 +26,73 @@
 			}
 		}
 	}
+
+	/* Stacked form */
+	&.stacked {
+		.radius(10px);
+		.box_shadow(0 0 30px #AAA);
+		.element {
+			margin: 0;
+			padding: 0;
+			label {
+				display: none;
+			}
+			.input_controls {
+				width: 100%;
+				input[type="text"], input[type="password"], input[type="submit"], input[type="button"], textarea, select {
+					margin: 0 0 -1px 0;
+					padding: 15px;
+					width: 100%;
+					border: 1px solid #CCC;
+				}
+				input[type="text"], input[type="password"], textarea {
+					padding: 15px;
+					box-sizing: border-box;
+				}
+
+				/* button CSS */
+				input[type="submit"], input[type="button"] {
+					cursor: pointer;
+					color: #FFF;
+					background: #4787ED;
+					border: 1px solid #2A69CE;
+					font-weight: bold;
+				}
+				input[type="submit"][disabled="disabled"], input[type="button"][disabled="disabled"] {
+					cursor: auto;
+					border: 1px solid #AAA;
+					background: #BBB;
+				}
+
+				/* labels inside input controls are visible until custom inputs are implemented (checkboxes anf radio) */
+				label {
+					margin: 0 0 -1px 0;
+					padding: 15px;
+					width: 100%;
+					border: 1px solid #CCC;
+					background: #FFF;
+					box-sizing: border-box;
+					display: block;
+					input {
+						margin: auto 5px auto auto;
+					}
+				}
+			}
+		}
+		.element:first-child .input_controls {
+			input, textarea, select {
+				.radius(10px 10px 0 0);
+			}
+		}
+		.element:last-child .input_controls {
+			input, textarea, select {
+				.radius(0 0 10px 10px);
+			}
+		}
+	}
+
 }
 textarea {
 	font-family: "Helvetica Neue", Helvetica, Verdana, Arial;
 	font-size: 13px;
-} 
+}

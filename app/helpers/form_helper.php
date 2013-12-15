@@ -13,6 +13,12 @@ class Form {
 		$class = isset($options['class']) ? $options['class'] : 'fly_form';
 
 		$options['class'] = $class;
+
+		// if stacked is true in form tag
+		if ($options['stacked']) {
+			$options['class'] = $options['class'] . ' stacked';
+			unset($options['stacked']);
+		}
 		
 		if (isset($options['url'])) {
 			$url = $options['url'];
