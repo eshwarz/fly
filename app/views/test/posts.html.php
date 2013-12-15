@@ -1,6 +1,4 @@
 <?php
-render ( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
-
 echo $content;
 
 $fruits = array( 'apple', 'banana', 'orange', 'grapes', 'pine apple' );

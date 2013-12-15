@@ -1,7 +1,3 @@
-<?php
-render ( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
-?>
-
 <h2 class="center">Test Form</h2>
 <div style="margin:auto; width: 500px;">
 	<?php

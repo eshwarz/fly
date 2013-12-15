@@ -16,6 +16,7 @@
 		<div class="container container_pad">
 			<div class="paper mb20">
 				<div class="p10">
+					<?php render (array('partial' => 'test/header', 'locals' => array( 'title' => $title ))); ?>
 					{{yield}}
 				</div>	
 			</div>

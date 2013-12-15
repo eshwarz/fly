@@ -25,7 +25,7 @@ class SessionsController extends ApplicationController {
 				setcookie("pavsesh_user", $uid, time()+60*60*24*30, "/");
 				setcookie("pavsesh_timezone", $password, time()+60*60*24*30, "/");
 			}
-			redirect_to(blog_path);
+			redirect_to(AFTER_SIGN_IN_PATH);
 		} else {
 			redirect_to(user_sign_in_path.'?failed=1');
 		}

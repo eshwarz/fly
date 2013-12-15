@@ -1,7 +1,3 @@
-<?php
-render ( array( 'partial' => 'header', 'locals' => array( 'title' => $title ) ) );
-?>
-
 <h3>Usage of Anchor Helpers</h3>
 
 <?php
