@@ -6,7 +6,10 @@ class User extends ActiveRecord\Model {
 	static $validates_uniqueness_of = array(array('email'));
 
 	public static function genders() {
-		return array( array('Male', 1), array('Female', 2) );
+		return array(
+			array('Male', 1),
+			array('Female', 2)
+		);
 	}
 
 
@@ -14,13 +17,13 @@ class User extends ActiveRecord\Model {
 		
 		$flag = static::checkOptions($options);
 		if ($flag == 1) {
-			if (isset($_COOKIE['fly_user']) && isset($_COOKIE['fly_timezone']))
+			if (isset($_COOKIE[USER_SESSION_KEY]) && isset($_COOKIE[USER_TIMEZONE_KEY]))
 			{
-				$_SESSION['fly_user'] = $_COOKIE['fly_user'];
-				$_SESSION['fly_timezone'] = $_COOKIE['fly_timezone'];
+				$_SESSION[USER_SESSION_KEY] = $_COOKIE[USER_SESSION_KEY];
+				$_SESSION[USER_TIMEZONE_KEY] = $_COOKIE[USER_TIMEZONE_KEY];
 			}
 
-			$uid = $_SESSION['fly_user'];
+			$uid = $_SESSION[USER_SESSION_KEY];
 
 			if (!$uid)
 			{

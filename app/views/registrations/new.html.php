@@ -4,24 +4,23 @@ if ($_GET['email'] == 'exists') {
 	<center class="error">Email Address already exists!</center>
 	<?php
 }
-render ( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title ) ) );
 ?>
 
 <h2 class="center">Sign Up</h2>
 
 <div style="width: 500px; margin: auto;">
 	<?php
-		$form = new Form('User');
-		echo $form->form_tag( array( 'action' => 'create', 'method' => 'POST', 'validate' => 'true' ));
-		echo $form->input( 'first_name', array( 'placeholder' => 'First Name', 'validate' => 'true' ) );
-		echo $form->input( 'last_name', array( 'placeholder' => 'Last Name', 'validate' => 'true' ) );
-		echo $form->input( 'email', array( 'placeholder' => 'Email Address', 'validate' => 'true', 'validate_flag' => 'email' ) );
-		echo $form->input( 'password', array( 'as' => 'password', 'placeholder' => 'Password', 'validate' => 'true', 'validate_flag' => 'password' ) );
-		echo $form->input( 'confirm_password', array( 'as' => 'password', 'placeholder' => 'Confirmation Password', 'validate' => 'true', 'validate_flag' => 'confirm_password' ) );
-		echo $form->input( 'sex', array( 'as' => 'select', 'prompt' => 'Select Sex', 'collection' => User::genders(), 'validate' => 'true' ) );
+		$f = new Form('User');
+		echo $f->form_tag( array( 'action' => 'create', 'method' => 'POST', 'validate' => 'true' ));
+		echo $f->input( 'first_name', array( 'placeholder' => 'First Name', 'validate' => 'true' ) );
+		echo $f->input( 'last_name', array( 'placeholder' => 'Last Name', 'validate' => 'true' ) );
+		echo $f->input( 'email', array( 'placeholder' => 'Email Address', 'validate' => 'true', 'validate_flag' => 'email' ) );
+		echo $f->input( 'password', array( 'as' => 'password', 'placeholder' => 'Password', 'validate' => 'true', 'validate_flag' => 'password' ) );
+		echo $f->input( 'confirm_password', array( 'as' => 'password', 'placeholder' => 'Confirmation Password', 'validate' => 'true', 'validate_flag' => 'confirm_password' ) );
+		echo $f->input( 'sex', array( 'as' => 'select', 'prompt' => 'Select Sex', 'collection' => User::genders(), 'validate' => 'true' ) );
 
-		echo $form->format('', Form::submit(array( 'value' => 'Sign Up' )));
-		echo $form->end_form();
+		echo $f->format('', Form::submit(array( 'value' => 'Sign Up' )));
+		echo $f->end_form();
 	?>
 
 	<?php

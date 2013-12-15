@@ -22,8 +22,8 @@ class SessionsController extends ApplicationController {
 			$_SESSION[USER_TIMEZONE_KEY] = 123;
 			if ($credentials['remember'][0] == '1')
 			{
-				setcookie("pavsesh_user", $uid, time()+60*60*24*30, "/");
-				setcookie("pavsesh_timezone", $password, time()+60*60*24*30, "/");
+				setcookie(USER_SESSION_KEY, $uid, time()+60*60*24*30, "/");
+				setcookie(USER_TIMEZONE_KEY, $password, time()+60*60*24*30, "/");
 			}
 			redirect_to(AFTER_SIGN_IN_PATH);
 		} else {
@@ -35,8 +35,8 @@ class SessionsController extends ApplicationController {
 	public function destroy() {
 		if (isset($_COOKIE[USER_SESSION_KEY]) && isset($_COOKIE[USER_TIMEZONE_KEY]))
 		{
-			setcookie("pavsesh_user", "", time()-60*60*24*30, "/");
-			setcookie("pavsesh_timezone", "", time()-60*60*24*30, "/");
+			setcookie(USER_SESSION_KEY, "", time()-60*60*24*30, "/");
+			setcookie(USER_TIMEZONE_KEY, "", time()-60*60*24*30, "/");
 		}
 		
 		unset($_SESSION[USER_SESSION_KEY]);

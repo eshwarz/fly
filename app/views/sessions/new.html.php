@@ -12,10 +12,6 @@ if ($_GET['success'] == 1) {
 }
 ?>
 
-<?php
-render ( array( 'partial' => 'test/header', 'locals' => array( 'title' => $title ) ) );
-?>
-
 <h2 class="center">Sign In</h2>
 <div style="width: 500px; margin: auto;">
 	<?php
