@@ -61,6 +61,41 @@ function content_tag($tag, $content, $options = array()) {
 	return Html::content_tag($tag, $content, $options);
 }
 
+// strong tag
+function strong($content, $options = array()) {
+	return Html::strong($content, $options);
+}
+
+// b tag
+function b($content, $options = array()) {
+	return Html::b($content, $options);
+}
+
+// i tag
+function i($content, $options = array()) {
+	return Html::i($content, $options);
+}
+
+// u tag
+function u($content, $options = array()) {
+	return Html::u($content, $options);
+}
+
+// em tag
+function em($content, $options = array()) {
+	return Html::em($content, $options);
+}
+
+// br tag
+function br() {
+	return Html::br();
+}
+
+// hr tag
+function hr() {
+	return Html::hr();
+}
+
 function humanize($str) {
 	$str = trim(strtolower($str));
 	$str = preg_replace('/[^a-z0-9\s+]/', ' ', $str);

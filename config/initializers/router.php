@@ -9,6 +9,7 @@ class Router {
 	public static $route_set;
 	public static $_called_controller;
 	public static $_called_action;
+	public static $_default_action = 'index';
 	
 	public static function match ($path, $controller_action, $as_path = null) {
 		if (!empty($path) && !empty($controller_action)) {
@@ -59,7 +60,11 @@ class Router {
 		if (empty(static::$route_set)) {
 			static::$_called_controller = $controller = $request_uri[0];
 			if (empty($request_uri[1])) {
-				Fly::helper('Routing Error', 'No route matches for <b>/' . $request_uri[0] . '</b>');
+				// if no action is given check if the controller exists and then redirect to index action of the controller
+				$params = array_slice($request_uri, 1);
+				static::$_called_action = $action = static::$_default_action;
+				Request::passRequest($controller, $action, $params);
+				// Fly::helper('Routing Error', 'No route matches for <b>/' . $request_uri[0] . '</b>');
 			}
 			else {
 				static::$route_set = 1;

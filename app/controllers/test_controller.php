@@ -3,17 +3,13 @@
 class TestController extends ApplicationController {
 
 	public function before_filter() {
-		User::authenticate( array('only' => array('profile')) );
+		User::authenticate(array('only' => array('profile')));
 	}
 
 	public function index() {
-
-		render (array('view' => 'index',
-			'locals' => array(
-												'title' => 'Fly PHP',
-												'content' => 'This is a test page by <b>Fly PHP</b>. Delete the corresponding controller and the view file itself or it can even be kept for later reference.'
-											)
-		));
+		$locals['title'] = 'Fly PHP';
+		$locals['content'] = 'This is a test page by <b>Fly PHP</b>. Delete the corresponding controller and the view file itself or it can even be kept for later reference.';
+		render(array('view' => 'index', 'locals' => $locals));
 	}
 
 

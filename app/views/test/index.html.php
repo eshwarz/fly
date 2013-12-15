@@ -11,13 +11,13 @@
 <div class="mt30">
 	<h3>Step 1: Create Controller</h3>
 	<p>Create the controller with a name followed by "_controller" inside "app/controllers" directory and the extension should be '.php'</p>
-	<p class="">Example: app/controllers/home_controller.php</p>
+	<?= content_tag('pre', 'Example: app/controllers/home_controller.php', array('style' => 'color: #0C0;')) ?>
 </div>
 
 <div class="mt30">
 	<h3>Step 2: Create Views</h3>
 	<p>Create a directory with the name of controller in views directory, then create view files with the extension '.html.php'</p>	
-	<p class="">Example: app/views/home/index.html.php</p>
+	<?= content_tag('pre', 'Example: app/views/home/index.html.php', array('style' => 'color: #0C0;')) ?>
 </div>
 
 <div class="mt30">
@@ -32,7 +32,7 @@
 	<p>
 		Fly PHP uses <?php echo $less_css; ?> for writing CSS faster. Have a look at <?php echo $less_css; ?> or write your own CSS. Save stylesheets in "app/assets/stylesheets/" and include the file in "app/assets/stylesheets/css.php".
 	</p>
-	<p class="">Example: app/assets/stylesheets/main.less</p>
+	<?= content_tag('pre', 'Example: app/assets/stylesheets/main.less', array('style' => 'color: #0C0;')) ?>
 </div>
 
 <div class="mt30">
@@ -40,7 +40,7 @@
 	<p>
 		Fly PHP uses <?php echo $jquery; ?>. Save javascripts in "app/assets/javascripts/" and include the file in "app/assets/stylesheets/scripts.php".
 	</p>
-	<p class="">Example: app/assets/javascripts/home.js</p>
+	<?= content_tag('pre', 'Example: app/assets/javascripts/home.js', array('style' => 'color: #0C0;')) ?>
 </div>
 
 <div class="mt30">
