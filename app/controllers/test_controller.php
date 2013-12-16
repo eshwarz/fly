@@ -47,10 +47,9 @@ class TestController extends ApplicationController {
 		
 		render(array('view' => 'input', 'locals' => $locals));
 	}
+
 	protected function trail() {
-		echo "try now";
+		// protected methods cannot be accessed from the browser
 	}
 
 }
-
-?>

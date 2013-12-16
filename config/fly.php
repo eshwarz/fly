@@ -81,7 +81,24 @@ class Fly {
 	// used once
 	static function link_less ($file)
 	{
-		return '<link rel="stylesheet/less" type="text/css" href="'.$file.'" />';
+		$less_file = $file;
+		$less_file_path = ROOT . str_replace(SERVER_PATH, '', $less_file);
+
+		$file_parts = explode('/', $file);
+		$less_filename = $file_parts[count($file_parts) - 1];
+		$filename = str_replace('.less', '.css', $less_filename);
+		$file = str_replace($less_filename, 'compiled/' . $filename, $file);
+		
+		$css_file = $file;
+		$css_file_path = ROOT . str_replace(SERVER_PATH, '', $css_file);
+
+		$less = new lessc;
+		try {
+			$less->checkedCompile($less_file_path, $css_file_path);
+		} catch (exception $e) {
+			FlyHelper::helper("Failed to Compile less: {$less_file_path}", $e->getMessage());
+		}
+		return '<link rel="stylesheet/less" type="text/css" href="'.$css_file.'" />';
 	}
 
 	static function link_css ($file)

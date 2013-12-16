@@ -1,0 +1,3 @@
+temp/*.*php
+app/assets/stylesheets/compiled/*.*css
+vendor/assets/stylesheets/compiled/*.*css

@@ -63,7 +63,7 @@ class View {
 
 		$layout_content = file_get_contents($layout_path);
 		$new_file_content = str_replace('{{yield}}', $view_content, $layout_content);
-		$new_file_name = ROOT . 'temp/' . microtime(rand().uniqid()) . '.php';
+		$new_file_name = ROOT . 'temp/' . Router::$_called_controller . '_' . Router::$_called_action . '_' . microtime(rand().uniqid()) . '.php';
 		$temp_file = file_put_contents($new_file_name, $new_file_content);
 
 		require $new_file_name;
