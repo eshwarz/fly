@@ -47,6 +47,9 @@ class TestController extends ApplicationController {
 		
 		render(array('view' => 'input', 'locals' => $locals));
 	}
+	protected function trail() {
+		echo "try now";
+	}
 
 }
 
