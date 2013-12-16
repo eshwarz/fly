@@ -5,10 +5,6 @@
 class Input
 {
 
-	function __construct()
-	{
-	}
-
 	static function getParams ($key = null, $xss_filter = false)
 	{
 		// getting only particular parameter if key is set otherwise return full array.
@@ -37,6 +33,16 @@ class Input
 			return $param;
 		} else {
 			return $_REQUEST;
+		}
+	}
+
+	static function server ($key = null)
+	{
+		// getting only particular parameter if key is set otherwise return full array.
+		if (!empty($key)) {
+			return $_SERVER[$key];
+		} else {
+			return $_SERVER;
 		}
 	}
 

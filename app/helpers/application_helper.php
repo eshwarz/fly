@@ -79,8 +79,8 @@ class Helper {
 }
 
 function current_user() {
-	if (!empty($_SESSION[USER_SESSION_KEY])) {
-		$uid = $_SESSION[USER_SESSION_KEY];
+	$uid = session(USER_SESSION_KEY);
+	if (!empty($uid)) {
 		return User::find($uid);
 	} else {
 		return false;

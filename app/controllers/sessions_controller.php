@@ -18,12 +18,13 @@ class SessionsController extends ApplicationController {
 			
 			// authenticating user
 			session_start();
-			$uid = $_SESSION[USER_SESSION_KEY] = $user->id;
-			$_SESSION[USER_TIMEZONE_KEY] = 123;
+			set_session(USER_SESSION_KEY, $user->id);
+			$uid = $user->id;
+			set_session(USER_TIMEZONE_KEY, 123);
 			if ($credentials['remember'][0] == '1')
 			{
-				setcookie(USER_SESSION_KEY, $uid, time()+60*60*24*30, "/");
-				setcookie(USER_TIMEZONE_KEY, $password, time()+60*60*24*30, "/");
+				set_cookie(USER_SESSION_KEY, $uid, REMEMBER_ME_EXPIRE_TIME);
+				set_cookie(USER_TIMEZONE_KEY, 123, REMEMBER_ME_EXPIRE_TIME);
 			}
 			redirect_to(AFTER_SIGN_IN_PATH);
 		} else {
@@ -33,14 +34,16 @@ class SessionsController extends ApplicationController {
 	}
 
 	public function destroy() {
-		if (isset($_COOKIE[USER_SESSION_KEY]) && isset($_COOKIE[USER_TIMEZONE_KEY]))
+		$user_session_cookie = cookie(USER_SESSION_KEY);
+		$user_timezone_cookie = cookie(USER_TIMEZONE_KEY);
+		if (isset($user_session_cookie) && isset($user_timezone_cookie))
 		{
-			setcookie(USER_SESSION_KEY, "", time()-60*60*24*30, "/");
-			setcookie(USER_TIMEZONE_KEY, "", time()-60*60*24*30, "/");
+			remove_cookie(USER_SESSION_KEY);
+			remove_cookie(USER_TIMEZONE_KEY);
 		}
 		
-		unset($_SESSION[USER_SESSION_KEY]);
-		unset($_SESSION[USER_TIMEZONE_KEY]);
+		remove_session(USER_SESSION_KEY);
+		remove_session(USER_TIMEZONE_KEY);
 		
 		session_destroy();
 		redirect_to(root_path);

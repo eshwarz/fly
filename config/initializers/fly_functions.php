@@ -80,14 +80,42 @@ function hr() {
 }
 
 // Input global functions
-function getParams($key = null, $xss_filter = false) {
+function get_params($key = null, $xss_filter = false) {
 	return Input::getParams($key, $xss_filter);
 }
 
-function postParams($key = null, $xss_filter = false) {
+function post_params($key = null, $xss_filter = false) {
 	return Input::postParams($key, $xss_filter);
 }
 
 function params($key = null, $xss_filter = false) {
 	return Input::params($key, $xss_filter);
+}
+
+function server($key = null) {
+	return Input::server($key);
+}
+
+function set_session($key, $value) {
+	return Session::setSession($key, $value);
+}
+
+function session($key = null) {
+	return Session::getSession($key);
+}
+
+function remove_session($key = null) {
+	return Session::removeSession($key);
+}
+
+function set_cookie($name, $value, $expire = 0, $path = COOKIE_PATH, $domain = COOKIE_DOMAIN, $secure = false, $httponly = false) {
+	return Session::saveCookie($name, $value, $expire, $path, $domain, $secure, $httponly);
+}
+
+function cookie($key = null) {
+	return Session::cookie($key);
+}
+
+function remove_cookie($key = null) {
+	return Session::removeCookie($key);
 }

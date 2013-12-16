@@ -43,7 +43,7 @@ class TestController extends ApplicationController {
 		$locals['title'] = 'FlyPHP - Usage of Input Helpers';
 		$locals['params'] = params();
 		$locals['id'] = params('id');
-		$locals['fruit'] = getParams('fruit');
+		$locals['fruit'] = get_params('fruit');
 		
 		render(array('view' => 'input', 'locals' => $locals));
 	}

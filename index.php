@@ -36,7 +36,13 @@ require_all('app/helpers/');
 
 debug();
 
-$uri = $_SERVER['REDIRECT_URL'];
+$redirect_url = server('REDIRECT_URL');
+if (!empty($redirect_url)) {
+	$uri = $redirect_url;
+} else {
+	$uri = server('REQUEST_URI');
+}
+
 Registry::set('uri', $uri);
 
 Router::dispatch();

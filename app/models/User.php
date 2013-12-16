@@ -17,20 +17,22 @@ class User extends ActiveRecord\Model {
 		
 		$flag = static::checkOptions($options);
 		if ($flag == 1) {
-			if (isset($_COOKIE[USER_SESSION_KEY]) && isset($_COOKIE[USER_TIMEZONE_KEY]))
+			$user_session_cookie = cookie(USER_SESSION_KEY);
+			$user_timezone_cookie = cookie(USER_TIMEZONE_KEY);
+			if (isset($user_session_cookie) && isset($user_timezone_cookie))
 			{
-				$_SESSION[USER_SESSION_KEY] = $_COOKIE[USER_SESSION_KEY];
-				$_SESSION[USER_TIMEZONE_KEY] = $_COOKIE[USER_TIMEZONE_KEY];
+				set_session(USER_SESSION_KEY, $user_session_cookie);
+				set_session(USER_TIMEZONE_KEY, $user_timezone_cookie);
 			}
 
-			$uid = $_SESSION[USER_SESSION_KEY];
+			$uid = session(USER_SESSION_KEY);
 
 			if (!$uid)
 			{
-				if ($_REQUEST['redirect'] == true)
+				if (parmas('redirect') == true)
 				{
-					$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-					$_SESSION['redirect'] = $url;
+					$url = "http://".server('HTTP_HOST').server('REQUEST_URI');
+					set_session('redirect', $url);
 				}
 				redirect_to(user_sign_in_path);
 			}
