@@ -57,7 +57,7 @@
 		echo content_tag('p', 'Action is defaulted to index action in case of no action is given');
 		echo content_tag('pre', 'Syntax: '.b('controller_action_path'), array('style' => 'color: #00C;'));
 		echo content_tag('pre',
-			'Example: ' . b('test_forms_path') . content_tag('span', ' points to /test/Forms.', array('style' => 'color: #333')),
+			'Example: ' . b('test_forms_path') . content_tag('span', ' points to /test/forms.', array('style' => 'color: #333')),
 			array('style' => 'color: #0C0;'));
 		?>
 	</div>

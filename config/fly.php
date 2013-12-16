@@ -7,6 +7,13 @@
 
 class Fly {
 
+	private static $_version = 1.1;
+
+	static function version ()
+	{
+		return self::$_version;
+	}
+
 	static function require_all ($destination)
 	{
 		$dir = opendir($destination);
