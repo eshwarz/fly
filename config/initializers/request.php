@@ -31,10 +31,10 @@ class Request
 					// 	$instance->after_filter();
 				}
 				else
-					Fly::helper('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called. The function might not exists!');
+					FlyHelper::helper('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called. The function might not exists!');
 			}
 			else
-				Fly::helper('Controller error', '<b>' . $class . '</b> does not exists.');
+				FlyHelper::helper('Controller error', '<b>' . $class . '</b> does not exists.');
 		}
 	}
 

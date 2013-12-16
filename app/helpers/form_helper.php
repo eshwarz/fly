@@ -35,12 +35,12 @@ class Form {
 				unset($options['multipart']);
 			}
 
-			$form = '<form action="'.$url.'" '.array_to_params($options).'>';
+			$form = '<form action="'.$url.'" '.array_to_attributes($options).'>';
 		}
 		elseif (isset($options['action'])) {
 			$controller = Router::$_called_controller;
 			$options['action'] = '/'.$controller.'/'.$options['action'];
-			$form = '<form '.array_to_params($options).'>';
+			$form = '<form '.array_to_attributes($options).'>';
 		}
 			return $form;
 	}
@@ -64,14 +64,14 @@ class Form {
 
 		// text and password
 		if ($type == 'text' || $type == 'password' || $type == 'hidden') {
-			$input = '<input type="'.$type.'" name="'.$name.'" '.array_to_params($params).' />';
+			$input = '<input type="'.$type.'" name="'.$name.'" '.array_to_attributes($params).' />';
 		}
 
 		// textarea
 		if ($type == 'textarea') {
 			$value = $params['value'];
 			unset($params['value']);
-			$input = '<textarea name="'.$name.'" '.array_to_params($params).'>'.$value.'</textarea>';
+			$input = '<textarea name="'.$name.'" '.array_to_attributes($params).'>'.$value.'</textarea>';
 		}
 		
 		// select
@@ -79,7 +79,7 @@ class Form {
 			$collection = $params['collection'];
 			unset($params['collection']);
 			unset($params['id']);
-			$input = '<select name="'.$name.'" '.array_to_params($params).' id="'.$id.'">';
+			$input = '<select name="'.$name.'" '.array_to_attributes($params).' id="'.$id.'">';
 			if ($params['prompt']) {
 				$input .= '<option value="">'.$params['prompt'].'</option>';
 			}
@@ -101,7 +101,7 @@ class Form {
 					$checked = 'checked="checked"';
 				else
 					$checked = '';
-				$input .= '<label class="cp '.$stacked.'"><input type="radio" value="'.$option[1].'" name="'.$name.'" '.array_to_params($params).' id="'.$option[1].'" '.$checked.'>'.$option[0].'</label>';
+				$input .= '<label class="cp '.$stacked.'"><input type="radio" value="'.$option[1].'" name="'.$name.'" '.array_to_attributes($params).' id="'.$option[1].'" '.$checked.'>'.$option[0].'</label>';
 			}
 		}
 
@@ -117,7 +117,7 @@ class Form {
 					$checked = 'checked="checked"';
 				else
 					$checked = '';
-				$input .= '<label class="cp '.$stacked.'"><input type="checkbox" value="'.$option[1].'" name="'.$name.'[]" '.array_to_params($params).' id="'.$option[1].'" '.$checked.'>'.$option[0].'</label>';
+				$input .= '<label class="cp '.$stacked.'"><input type="checkbox" value="'.$option[1].'" name="'.$name.'[]" '.array_to_attributes($params).' id="'.$option[1].'" '.$checked.'>'.$option[0].'</label>';
 			}
 		}
 
@@ -142,12 +142,12 @@ class Form {
 	}
 
 	public static function submit($params) {
-		$output = '<input type="submit" '.array_to_params($params).' />';
+		$output = '<input type="submit" '.array_to_attributes($params).' />';
 		return $output;
 	}
 
 	public function reset($params) {
-		$output = '<input type="reset" '.array_to_params($params).' />';
+		$output = '<input type="reset" '.array_to_attributes($params).' />';
 		return $output;
 	}
 

@@ -33,8 +33,18 @@ class TestController extends ApplicationController {
 	}
 
 	public function helpers() {
-		$locals['title'] = 'Fly PHP - Usage of Helpers';
+		$locals['title'] = 'Fly PHP - Usage of HTML Helpers';
 		render(array('view' => 'helpers', 'locals' => $locals));
+	}
+
+	public function input()
+	{
+		$locals['title'] = 'FlyPHP - Usage of Input Helpers';
+		$locals['params'] = params();
+		$locals['id'] = params('id');
+		$locals['fruit'] = getParams('fruit');
+		
+		render(array('view' => 'input', 'locals' => $locals));
 	}
 
 }

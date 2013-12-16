@@ -11,9 +11,16 @@ class Html
 	public static function link_to($text, $url, $params = array())
 	{
 		if (strpos($url, '/') === false && strpos($url, '#') === false) {
-			$url = Router::route_by_constant($url);
+			$url = Router::routeByConstant($url);
 		}
-		$link = '<a href="'.$url.'" '.array_to_params($params).'>'.$text.'</a>';
+
+		// setting get params for a link from $params['params']
+		if (isset($params['params'])) {
+			$get_params = self::array_to_params($params['params']);
+			unset($params['params']);
+		}
+
+		$link = '<a href="' . $url . $get_params . '" ' . array_to_attributes($params) . '>' . $text . '</a>';
 		return $link;
 	}
 
@@ -21,14 +28,14 @@ class Html
 	public static function redirect_to($path)
 	{
 		if (strpos($path, '/') === false && strpos($url, '#') === false) {
-			$path = Router::route_by_constant($path);
+			$path = Router::routeByConstant($path);
 		}
 		header('Location:'.$path);
 		exit();
 	}
 
-	// array to parameters
-	public static function array_to_params($array = array())
+	// array to attributes
+	public static function array_to_attributes($array = array())
 	{
 		$params = ' ';
 		foreach ($array as $key => $value) {
@@ -37,10 +44,21 @@ class Html
 		return $params;
 	}
 
+	// array to parameteres
+	public static function array_to_params($array = array())
+	{
+		$params = '?';
+		foreach ($array as $key => $value) {
+			$params .= $key . '=' . $value . '&';
+		}
+		$params = substr($params, 0, strlen($params) - 1);
+		return $params;
+	}
+
 	// content_tag() creates any paired tag
 	public static function content_tag($tag, $content, $options = array())
 	{
-		$attributes = self::array_to_params($options);
+		$attributes = self::array_to_attributes($options);
 		$tag = '<' . $tag . $attributes . '>' . $content . '</' . $tag . '>';
 		return $tag;
 	}
@@ -48,31 +66,31 @@ class Html
 	// strong tag
 	public static function strong($content, $options = array())
 	{
-		return '<strong' . self::array_to_params($options) . '>' . $content . '</strong>';
+		return '<strong' . self::array_to_attributes($options) . '>' . $content . '</strong>';
 	}
 
 	// b tag
 	public static function b($content, $options = array())
 	{
-		return '<b' . self::array_to_params($options) . '>' . $content . '</b>';
+		return '<b' . self::array_to_attributes($options) . '>' . $content . '</b>';
 	}
 
 	// i tag
 	public static function i($content, $options = array())
 	{
-		return '<i' . self::array_to_params($options) . '>' . $content . '</i>';
+		return '<i' . self::array_to_attributes($options) . '>' . $content . '</i>';
 	}
 
 	// u tag
 	public static function u($content, $options = array())
 	{
-		return '<u' . self::array_to_params($options) . '>' . $content . '</u>';
+		return '<u' . self::array_to_attributes($options) . '>' . $content . '</u>';
 	}
 
 	// em tag
 	public static function em($content, $options = array())
 	{
-		return '<em' . self::array_to_params($options) . '>' . $content . '</em>';
+		return '<em' . self::array_to_attributes($options) . '>' . $content . '</em>';
 	}
 
 	// br tag

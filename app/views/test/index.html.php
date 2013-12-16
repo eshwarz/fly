@@ -50,7 +50,8 @@
 		echo link_to('Sign Up', new_user_path);
 		echo link_to('Sign In', user_sign_in_path);
 		echo link_to('Profile', test_profile_path);
-		echo link_to('Usage of Helpers', test_helpers_path);
+		echo link_to('Usage of HTML Helpers', test_helpers_path);
+		echo link_to('Usage of Input Helpers', test_input_path, array('params' => array('id' => 1234567890, 'fruit' => 'apple')));
 
 		echo content_tag('p', 'Paths to links can be given as mere constants and the convention is ' . b('controller') . ' followed by ' . b('_') . ' and ' . b('action') . ' followed by ' . b('_') . ' and ' . b('path'));
 		echo content_tag('p', 'Action is defaulted to index action in case of no action is given');

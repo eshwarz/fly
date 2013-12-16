@@ -1,6 +1,6 @@
 <?php
 
-class Fly {
+class FlyHelper {
 
 	public static function helper ($header, $message) {
 		$content = "

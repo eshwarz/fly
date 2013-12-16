@@ -36,7 +36,7 @@ class Router {
 			static::$route_set = 1;
 			if (empty(static::$_routes['root'][0])) {
 				// case: no root specified and viewing project for the first time.
-				Fly::helper('No Route for root', 'There is no route defined for root in the config/routes.php');
+				FlyHelper::helper('No Route for root', 'There is no route defined for root in the config/routes.php');
 			}
 			static::$_called_controller = $controller = static::$_routes['root'][0];
 			static::$_called_action = $action = static::$_routes['root'][1];
@@ -64,7 +64,7 @@ class Router {
 				$params = array_slice($request_uri, 1);
 				static::$_called_action = $action = static::$_default_action;
 				Request::passRequest($controller, $action, $params);
-				// Fly::helper('Routing Error', 'No route matches for <b>/' . $request_uri[0] . '</b>');
+				// FlyHelper::helper('Routing Error', 'No route matches for <b>/' . $request_uri[0] . '</b>');
 			}
 			else {
 				static::$route_set = 1;
@@ -76,7 +76,7 @@ class Router {
 	}
 
 	// get route by constant
-	public static function route_by_constant($constant) {
+	public static function routeByConstant($constant) {
 		$url_string = str_replace('_path', '', $constant);
 		$url = str_replace('_', '/', $url_string);
 		return '/'.$url;
