@@ -2,8 +2,12 @@
 // constants define here.
 
 defined('HTTP_HOST') or define('HTTP_HOST', $_SERVER['HTTP_HOST']);
-define('lessphp_path', '/vendor/plugins/lessphp/');
 
+// session controller releated constants
 define('USER_SESSION_KEY', 'fly_user');
 define('USER_TIMEZONE_KEY', 'fly_timezone');
 define('AFTER_SIGN_IN_PATH', 'test_path');
+
+// less stylesheets are included on development environment, this can be set to true to enable less.watch() mode
+// can be set to false if less takes lots of time to compile
+defined('LESS_STYLE_ON_DEV') or define('LESS_STYLE_ON_DEV', true);

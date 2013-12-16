@@ -98,7 +98,12 @@ class Fly {
 		} catch (exception $e) {
 			FlyHelper::helper("Failed to Compile less: {$less_file_path}", $e->getMessage());
 		}
-		return '<link rel="stylesheet/less" type="text/css" href="'.$css_file.'" />';
+		if (LESS_STYLE_ON_DEV == true && ENV == 'development') {
+			$style = $less_file;
+		} else {
+			$style = $css_file;
+		}
+		return '<link rel="stylesheet/less" type="text/css" href="'.$style.'" />';
 	}
 
 	static function link_css ($file)

@@ -13,8 +13,6 @@
 // constants defined here.
 session_start();
 
-// environment file
-
 define ('SERVER_NAME', $_SERVER['SERVER_NAME']);
 define ('SERVER_PATH', 'http://' . SERVER_NAME . '/');
 define ('ROOT', str_replace('\\', '/', dirname(realpath(__FILE__))) . '/');
