@@ -29,7 +29,7 @@ class User extends ActiveRecord\Model {
 
 			if (!$uid)
 			{
-				if (parmas('redirect') == true)
+				if (params('redirect') == true)
 				{
 					$url = "http://".server('HTTP_HOST').server('REQUEST_URI');
 					set_session('redirect', $url);
