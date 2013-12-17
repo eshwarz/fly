@@ -10,7 +10,7 @@ class FlyHelper {
 		</div>";
 		
 		$layout_path = VIEW_PATH . 'layouts/fly.html.php';
-		View::yield( $content, $layout_path );
+		View::fly_yield( $content, $layout_path );
 	}
 
 }

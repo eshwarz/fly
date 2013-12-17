@@ -460,6 +460,7 @@ abstract class Connection
 	 */
 	public function string_to_datetime($string)
 	{
+		date_default_timezone_set('UTC');
 		$date = date_create($string);
 		$errors = \DateTime::getLastErrors();
 

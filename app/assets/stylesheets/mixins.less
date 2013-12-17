@@ -4,12 +4,20 @@
 	-o-box-shadow: @value;
 	box-shadow: @value;
 }
+
+.box_sizing(@value) {
+	-moz-box-sizing: @value;
+	-webkit-box-sizing: @value;
+	box-sizing: @value;
+}
+
 .radius(@value: 5px) {
 	-moz-border-radius: @value;
 	-webkit-border-radius: @value;
 	-o-border-radius: @value;
 	border-radius: @value;
 }
+
 .gradient(@start, @end) {
 	background-image:-moz-linear-gradient(top, @start, @end);
 	background-image:-ms-linear-gradient(top, @start, @end);
@@ -19,4 +27,9 @@
 	background-image:linear-gradient(top, @start, @end);
 	background-repeat:repeat-x;
 	filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start}', endColorstr='@{end}', GradientType=0)";
+}
+
+.default_font() {
+	font-family: "Helvetica Neue", Helvetica, Verdana, Arial;
+	font-size: 12px;
 }

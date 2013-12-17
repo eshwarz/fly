@@ -54,10 +54,10 @@ class View {
 		$layout_path = VIEW_PATH . 'layouts/' . $layout_file;
 		$view_content = file_get_contents($view_path);
 		
-		static::yield($view_content, $layout_path, $locals);
+		static::fly_yield($view_content, $layout_path, $locals);
 	}
 
-	public static function yield($view_content, $layout_path, $locals = null) {
+	public static function fly_yield($view_content, $layout_path, $locals = null) {
 		if (!empty($locals))
 			extract($locals);
 

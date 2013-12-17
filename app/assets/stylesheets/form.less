@@ -9,6 +9,10 @@ input:focus, select:focus {
 	outline-style: none;
 }
 
+input, select, textarea {
+	.default_font();
+}
+
 .fly_form {
 	.element {
 		margin-bottom: 10px;
@@ -56,7 +60,7 @@ input:focus, select:focus {
 				}
 				input[type="text"], input[type="password"], textarea {
 					padding: 15px;
-					box-sizing: border-box;
+					.box_sizing(border-box);
 					.box_shadow(0 0 5px #DDD inset);
 				}
 				select {
@@ -96,7 +100,7 @@ input:focus, select:focus {
 					width: 100%;
 					border: 1px solid #CCC;
 					background: #FFF;
-					box-sizing: border-box;
+					.box_sizing(border-box);
 					.box_shadow(0 0 5px #DDD inset);
 					display: block;
 					input {
