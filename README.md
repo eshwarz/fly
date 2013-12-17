@@ -10,18 +10,19 @@ Installation Notes:
 
 1. Clone the project for github repo
 
-2. Give 777 permissions to temp folder, its important to do this because fly relies on creating temporary files for rendering HTML pages.
+2. Give 777 permissions to following folders
+	- temp/
+	- app/assets/stylesheets/compiled/
+	- vendor/assets/stylesheets/compiled/
 
 3. Rename the 'fly' folder to your project name.
 
-4. Define SERVER_PATH constants correctly so that it matches your server. (SERVER_NAME is different from SERVER_PATH in case you have multiple projects)
+4. Its very important to create a virtual host for fly project (Lots of tutorials are available for setting up virtual host, please google and create a virtual host for your fly project)
 
 5. Enable rewrite module in apache config. (Ubuntu users: sudo a2enmod rewrite)
 
-6. In apache httpd.conf file set "AllowOverride None" to "AllowOverride All". This is makes sure that apache reads the .htaccess file in fly folder.
+6. In apache httpd.conf file set "AllowOverride None" to "AllowOverride FileInfo" or to "AllowOverride All" if first doesn't work. This is makes sure that apache reads the .htaccess file in fly folder.
 
 7. Restart the apache server after the changes are made.
 
 8. Configure your database in db/connection.php
-
-9. 
