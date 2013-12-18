@@ -2,10 +2,17 @@
 
 class View {
 
+	public static $_view_rendered = false;
+
 	public static function render ($opts = array()) {
 		
 		// use can also pass layout as array element to render a view along with layout.
 		// multiple declarations returns error.
+
+		if (!isset($opts['locals'])) {
+			global $locals;
+			$opts['locals'] = $locals;
+		}
 		
 		if ( (!empty($opts['controller']) && !empty($opts['view'])) || (!empty($opts['controller']) && !empty($opts['partial'])) || (!empty($opts['partial']) && !empty($opts['view'])) || (count($opts) < 1) ) {
 			FlyHelper::helper('Cannot call render!', Code::render());
@@ -48,11 +55,29 @@ class View {
 
 	protected static function yield_view($controller, $action, $opts) {
 		$locals = $opts['locals'];
-		
+
+		// getting layout from the controller in case of any.
+		$controller_class = ucfirst($controller) . 'Controller';
+
+		$layout_from_controller = property_exists($controller_class, 'layout') ? $controller_class::$layout : null;
+
+		// picking layout file
+		// layout preference (inside action > controller static variable > application)
+		if (isset($opts['layout'])) {
+			$layout_file = $opts['layout'] . '.html.php';
+		} elseif (!empty($layout_from_controller)) {
+			$layout_file = $layout_from_controller . '.html.php';
+		} else {
+			$layout_file = 'application.html.php';
+		}
+
 		$view_path = VIEW_PATH . $controller . '/' . $action . '.html.php';
-		$layout_file = isset($opts['layout']) ? $opts['layout'] . '.html.php' : 'application.html.php';
 		$layout_path = VIEW_PATH . 'layouts/' . $layout_file;
-		$view_content = file_get_contents($view_path);
+		if (file_exists($view_path)) {
+			$view_content = file_get_contents($view_path);
+		} else {
+			FlyHelper::helper('View file not found!', 'Please create a view file in the following place: ' . content_tag('pre', 'app/views/' . $controller . '/' . $action . '.html.php'));
+		}
 		
 		static::fly_yield($view_content, $layout_path, $locals);
 	}
@@ -68,10 +93,9 @@ class View {
 
 		require $new_file_name;
 		unlink ($new_file_name);
+
+		// setting view rendered to true for later checks
+		self::$_view_rendered = true;
 	}
 
-
-
 }
-
-?>

@@ -11,6 +11,7 @@ class FlyHelper {
 		
 		$layout_path = VIEW_PATH . 'layouts/fly.html.php';
 		View::fly_yield( $content, $layout_path );
+		exit();
 	}
 
 }

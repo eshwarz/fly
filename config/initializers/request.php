@@ -24,7 +24,16 @@ class Request
 					if ( method_exists($instance, before_filter) )
 						$instance->before_filter();
 
+					// calling controller's action
 					call_user_func_array(array($instance, $action), $params);
+
+					// rendering the view if not rendered from the controller's action
+					if (!View::$_view_rendered) {
+						global $locals;
+						$options['view'] = $action;
+						$options['locals'] = $locals;
+						render($options);
+					}
 
 					// calling after_filter before executing the called action.
 					// if ( function_exists($instance->after_filter()) )

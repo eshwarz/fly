@@ -6,7 +6,9 @@ class SessionsController extends ApplicationController {
 		if (current_user()) {
 			redirect_to(root_path);
 		} else {
-			render (array('view' => 'new', 'locals' => array('title' => 'Fly - Sign In')));
+			global $locals;
+			$locals['title'] = 'Fly - Sign In';
+			render(array('view' => 'new'));
 		}
 	}
 

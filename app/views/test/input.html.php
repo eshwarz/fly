@@ -5,6 +5,8 @@ echo content_tag('h3', 'Parmeters');
 
 var_dump($params);
 var_dump($id);
+var_dump($fruit);
+
 
 echo content_tag('h3', 'Session helpers');
 
@@ -24,4 +26,6 @@ remove_cookie('my_user');
 var_dump(cookie('my_cookie'));
 var_dump(cookie());
 
+echo content_tag('h3', 'List of local variables');
+var_dump($locals);
 ?>

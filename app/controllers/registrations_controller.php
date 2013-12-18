@@ -6,7 +6,9 @@ class RegistrationsController extends ApplicationController {
 		if (current_user()) {
 			redirect_to(root_path);
 		} else {
-			render ( array( 'view' => 'new', 'locals' => array( 'title' => 'Fly - Sign Up' ) ) );
+			global $locals;
+			$locals['title'] = 'Fly - Sign Up';
+			render(array('view' => 'new'));
 		}
 	}
 

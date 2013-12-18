@@ -2,54 +2,64 @@
 
 class TestController extends ApplicationController {
 
+	// public static $layout = 'test';
+
 	public function before_filter() {
 		User::authenticate(array('only' => array('profile')));
 	}
 
-	public function index() {
+	public function index()
+	{
+		global $locals;
 		$version = Fly::version();
 		$locals['title'] = 'Fly PHP ' . $version;
 		$locals['note'] = b('Note:') . ' This is a test page by '. b('Fly PHP') . '. Delete the corresponding controller and the view file itself or it can even be kept for later reference.';
-		render(array('view' => 'index', 'locals' => $locals));
 	}
 
-
-
-	public function posts() {
-
+	public function posts()
+	{
+		global $locals;
 		// $posts = Post::all( array( 'conditions' => "message LIKE '%hi%'", 'limit' => 10 ) );
-
-		render (array('view' => 'posts',
-			'locals' => array('title' => 'Fly PHP', 'content' => 'We flied with PHP',	'posts' => $posts)
-		));
+		$locals['title'] = 'Fly PHP';
+		$locals['content'] = 'We flied with PHP';
+		$locals['posts'] = $posts;
 	}
 
-	public function forms() {
-		// redirect_to (test_path);
-		render (array('view' => 'forms', 'locals' => array( 'title' => 'Fly PHP' )));
+	public function forms()
+	{
+		global $locals;
+		$locals['title'] = 'Fly PHP';
 	}
 
-	public function profile() {
-		render (array('view' => 'profile', 'locals' => array( 'title' => 'Fly PHP' )));
+	public function profile()
+	{
+		global $locals;
+		$locals['title'] = 'Fly PHP';
 	}
 
-	public function helpers() {
+	public function helpers()
+	{
+		global $locals;
 		$locals['title'] = 'Fly PHP - Usage of HTML Helpers';
-		render(array('view' => 'helpers', 'locals' => $locals));
 	}
 
 	public function input()
 	{
+		global $locals;
 		$locals['title'] = 'FlyPHP - Usage of Input Helpers';
 		$locals['params'] = params();
 		$locals['id'] = params('id');
 		$locals['fruit'] = get_params('fruit');
-		
-		render(array('view' => 'input', 'locals' => $locals));
 	}
 
-	protected function trail() {
+	protected function trail()
+	{
 		// protected methods cannot be accessed from the browser
+	}
+
+	public function view_test()
+	{
+		
 	}
 
 }
