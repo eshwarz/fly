@@ -100,15 +100,17 @@ class Fly {
 		}
 		if (LESS_STYLE_ON_DEV == true && ENV == 'development') {
 			$style = $less_file;
+			$rel = 'stylesheet/less';
 		} else {
 			$style = $css_file;
+			$rel = 'stylesheet';
 		}
-		return '<link rel="stylesheet/less" type="text/css" href="'.$style.'" />';
+		return '<link rel="' . $rel . '" type="text/css" href="' . $style . '" />';
 	}
 
 	static function link_css ($file)
 	{
-		return '<link rel="stylesheet/css" type="text/css" href="'.$file.'"/>';
+		return '<link rel="stylesheet" type="text/css" href="' . $file . '"/>';
 	}
 
 }

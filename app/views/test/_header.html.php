@@ -2,7 +2,7 @@
 	<?php echo image_tag('logo_small.png', array('width' => '50px', 'class' => 'fl ml10')); ?>
 	<h2 class="fl ml20"><?php echo $title; ?></h2>
 	<?php
-	if (Router::$_called_action != 'index') {
+	if (Router::$_called_controller != 'test' || Router::$_called_action != 'index') {
 		echo link_to ('Back', test_path, array('class' => 'fr lh50 mr30'));
 	}
 

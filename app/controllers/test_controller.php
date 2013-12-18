@@ -8,6 +8,10 @@ class TestController extends ApplicationController {
 		User::authenticate(array('only' => array('profile')));
 	}
 
+	public function after_filter() {
+		// echo content_tag('div', 'Rendered View: ' . Router::$_called_controller . '/' . Router::$_called_action, array('class' => 'tc m10'));
+	}
+
 	public function index()
 	{
 		global $locals;
@@ -59,7 +63,7 @@ class TestController extends ApplicationController {
 
 	public function view_test()
 	{
-		
+		// this method throws error as it fails to load the view file
 	}
 
 }

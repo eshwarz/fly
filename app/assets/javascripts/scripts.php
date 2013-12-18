@@ -8,5 +8,3 @@ if (LESS_STYLE_ON_DEV == true && ENV == 'development') {
 require_js('less');
 require_js('jquery');
 require_js('form_validation');
-
-?>

@@ -6,4 +6,7 @@ require_css('default');
 require_css('fly');
 require_css('footer');
 require_css('form');
-require_css('basic');
+
+// require_css('basic');
+// require_css('bootstrap/bootstrap');
+// require_css('bootstrap/bootstrap-theme');

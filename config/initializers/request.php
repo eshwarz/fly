@@ -21,7 +21,7 @@ class Request
 					$instance = new $class;
 
 					// calling before_filter before executing the called action.
-					if ( method_exists($instance, before_filter) )
+					if (method_exists($instance, 'before_filter'))
 						$instance->before_filter();
 
 					// calling controller's action
@@ -34,10 +34,11 @@ class Request
 						$options['locals'] = $locals;
 						render($options);
 					}
+					
+					// calling after_filter after executing the called action.
+					if (method_exists($instance, 'after_filter'))
+						$instance->after_filter();
 
-					// calling after_filter before executing the called action.
-					// if ( function_exists($instance->after_filter()) )
-					// 	$instance->after_filter();
 				}
 				else
 					FlyHelper::helper('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called or the function might not exists!');

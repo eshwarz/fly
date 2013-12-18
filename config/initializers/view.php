@@ -66,18 +66,29 @@ class View {
 		if (isset($opts['layout'])) {
 			$layout_file = $opts['layout'] . '.html.php';
 		} elseif (!empty($layout_from_controller)) {
+			if ($layout_from_controller == 'none') {
+				$no_layout = true;
+			}
 			$layout_file = $layout_from_controller . '.html.php';
 		} else {
 			$layout_file = 'application.html.php';
 		}
 
 		$view_path = VIEW_PATH . $controller . '/' . $action . '.html.php';
-		$layout_path = VIEW_PATH . 'layouts/' . $layout_file;
-		if (file_exists($view_path)) {
-			$view_content = file_get_contents($view_path);
+
+		// checking for no layout
+		if ($no_layout) {
+			$layout_path = false;
+			$view_content = false;
 		} else {
-			FlyHelper::helper('View file not found!', 'Please create a view file in the following place: ' . content_tag('pre', 'app/views/' . $controller . '/' . $action . '.html.php'));
+			$layout_path = VIEW_PATH . 'layouts/' . $layout_file;
+			if (file_exists($view_path)) {
+				$view_content = file_get_contents($view_path);
+			} else {
+				FlyHelper::helper('View file not found!', 'Please create a view file in the following place: ' . content_tag('pre', 'app/views/' . $controller . '/' . $action . '.html.php'));
+			}
 		}
+
 		
 		static::fly_yield($view_content, $layout_path, $locals);
 	}
@@ -86,13 +97,19 @@ class View {
 		if (!empty($locals))
 			extract($locals);
 
-		$layout_content = file_get_contents($layout_path);
-		$new_file_content = str_replace('{{yield}}', $view_content, $layout_content);
-		$new_file_name = ROOT . 'temp/' . Router::$_called_controller . '_' . Router::$_called_action . '_' . microtime(rand().uniqid()) . '.php';
-		$temp_file = file_put_contents($new_file_name, $new_file_content);
+		if ($view_content && $layout_path) {
+			// substituting view in layout
+			$layout_content = file_get_contents($layout_path);
+			$new_file_content = str_replace('{{yield}}', $view_content, $layout_content);
+			$new_file_name = ROOT . 'temp/' . Router::$_called_controller . '_' . Router::$_called_action . '_' . microtime(rand().uniqid()) . '.php';
+			$temp_file = file_put_contents($new_file_name, $new_file_content);
 
-		require $new_file_name;
-		unlink ($new_file_name);
+			require $new_file_name;
+			unlink ($new_file_name);
+		} else {
+			// no layout
+			require VIEW_PATH . Router::$_called_controller . '/' . Router::$_called_action . '.html.php';
+		}
 
 		// setting view rendered to true for later checks
 		self::$_view_rendered = true;
