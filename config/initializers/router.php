@@ -77,9 +77,12 @@ class Router {
 
 	// get route by constant
 	public static function routeByConstant($constant) {
-		$url_string = str_replace('_path', '', $constant);
-		$url = str_replace('_', '/', $url_string);
-		return '/'.$url;
+		if (strpos($constant, '/') === false && strpos($constant, '#') === false) {
+			$url_string = str_replace('_path', '', $constant);
+			$url = str_replace('_', '/', $url_string);
+			return '/'.$url;
+		}
+		return $constant;
 	}
 
 }

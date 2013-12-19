@@ -24,6 +24,9 @@ class Form {
 			$url = $options['url'];
 			unset($options['url']);
 
+			// converting constant path to actual URL in case if its a constant
+			$url = Router::routeByConstant($url);
+
 			// default method is set to post.
 			if (!isset($options['method'])) {
 				$options['method'] = 'post';

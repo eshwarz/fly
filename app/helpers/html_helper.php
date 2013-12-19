@@ -10,10 +10,8 @@ class Html
 	// creates Anchor tags
 	public static function link_to($text, $url, $params = array())
 	{
-		if (strpos($url, '/') === false && strpos($url, '#') === false) {
-			$url = Router::routeByConstant($url);
-		}
-
+		$url = Router::routeByConstant($url);
+		
 		// setting get params for a link from $params['params']
 		if (isset($params['params'])) {
 			$get_params = self::array_to_params($params['params']);
