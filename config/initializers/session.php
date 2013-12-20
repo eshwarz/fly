@@ -53,4 +53,5 @@ class Session
 			setcookie($key, '', time() - 1, COOKIE_PATH);
 		}
 	}
+	
 }

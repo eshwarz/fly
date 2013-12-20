@@ -52,6 +52,7 @@
 		echo link_to('Profile', test_profile_path);
 		echo link_to('Usage of HTML Helpers', test_helpers_path);
 		echo link_to('Usage of Input Helpers', test_input_path, array('params' => array('id' => 1234567890, 'fruit' => 'apple')));
+		echo link_to('Arguments', test_arguments_ . 'show' . _ . 2 . _path);
 
 		echo content_tag('p', 'Paths to links can be given as mere constants and the convention is ' . b('controller') . ' followed by ' . b('_') . ' and ' . b('action') . ' followed by ' . b('_') . ' and ' . b('path'));
 		echo content_tag('p', 'Action is defaulted to index action in case of no action is given');

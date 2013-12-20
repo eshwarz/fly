@@ -25,9 +25,8 @@ class Html
 	// redirects to given URL
 	public static function redirect_to($path)
 	{
-		if (strpos($path, '/') === false && strpos($url, '#') === false) {
-			$path = Router::routeByConstant($path);
-		}
+		// converting to url from constant in case if it is
+		$path = Router::routeByConstant($path);
 		header('Location:'.$path);
 		exit();
 	}

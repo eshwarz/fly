@@ -4,7 +4,7 @@
 		<meta name="keywords" content="fly, fly with PHP, MVC for PHP" />
 		<meta name="description" content="Eshwar's fly with PHP'" />
 		
-		<title><?php echo $title; ?></title>
+		<title><?= (isset($title)) ? $title : 'Fly PHP' ?></title>
 		<?php 
 		require_once ROOT . 'app/assets/stylesheets/css.php';
 		require_once ROOT . 'app/assets/javascripts/scripts.php';

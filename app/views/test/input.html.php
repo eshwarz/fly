@@ -28,4 +28,7 @@ var_dump(cookie());
 
 echo content_tag('h3', 'List of local variables');
 var_dump($locals);
+
+echo content_tag('h3', 'Displaying User Agent');
+echo user_agent();
 ?>

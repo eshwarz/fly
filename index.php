@@ -12,7 +12,6 @@
 
 // constants defined here.
 session_start();
-
 define('SERVER_NAME', $_SERVER['SERVER_NAME']);
 define('SERVER_PATH', 'http://' . SERVER_NAME . '/');
 define('ROOT', str_replace('\\', '/', dirname(realpath(__FILE__))) . '/');
@@ -35,6 +34,9 @@ require_once 'config/routes.php';
 require_all('app/helpers/');
 
 debug();
+set_error_handler('error_handler');
+register_shutdown_function('shutdown');
+
 
 $redirect_url = server('REDIRECT_URL');
 if (!empty($redirect_url)) {

@@ -2,7 +2,8 @@
 
 class SessionsController extends ApplicationController {
 
-	public function _new() {
+	public function _new()
+	{
 		if (current_user()) {
 			redirect_to(root_path);
 		} else {
@@ -12,8 +13,9 @@ class SessionsController extends ApplicationController {
 		}
 	}
 
-	public function create() {
-		$credentials = $_POST['User'];
+	public function create()
+	{
+		$credentials = params('User');
 		$user = User::find_by_email($credentials['email']);
 
 		if ($user->password == md5($credentials['password'])) {
@@ -35,7 +37,8 @@ class SessionsController extends ApplicationController {
 		
 	}
 
-	public function destroy() {
+	public function destroy()
+	{
 		$user_session_cookie = cookie(USER_SESSION_KEY);
 		$user_timezone_cookie = cookie(USER_TIMEZONE_KEY);
 		if (isset($user_session_cookie) && isset($user_timezone_cookie))

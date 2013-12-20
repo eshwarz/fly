@@ -1,10 +1,11 @@
 <?php
 /**
-* Input class handles $_GET, $_POST, $_REQUEST, $_COOKIE, $_SESSION, $_SERVER variables, user agent, etc
+* Input class handles $_GET, $_POST, $_REQUEST, $_SERVER variables, user agent, etc
 */
 class Input
 {
 
+	// acts as $_GET
 	static function getParams ($key = null, $xss_filter = false)
 	{
 		// getting only particular parameter if key is set otherwise return full array.
@@ -15,6 +16,7 @@ class Input
 		}
 	}
 
+	// acts as $_POST
 	static function postParams ($key = null, $xss_filter = false)
 	{
 		// getting only particular parameter if key is set otherwise return full array.
@@ -25,6 +27,7 @@ class Input
 		}
 	}
 
+	// acts as $_REQUEST
 	static function params ($key = null, $xss_filter = false)
 	{
 		// getting only particular parameter if key is set otherwise return full array.
@@ -44,6 +47,12 @@ class Input
 		} else {
 			return $_SERVER;
 		}
+	}
+
+	// returns user agent
+	static function userAgent ()
+	{
+		return $_SERVER['HTTP_USER_AGENT'];
 	}
 
 

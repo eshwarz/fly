@@ -63,6 +63,7 @@ class View {
 
 		// picking layout file
 		// layout preference (inside action > controller static variable > application)
+		$no_layout = false;
 		if (isset($opts['layout'])) {
 			$layout_file = $opts['layout'] . '.html.php';
 		} elseif (!empty($layout_from_controller)) {

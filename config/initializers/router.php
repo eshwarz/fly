@@ -64,9 +64,7 @@ class Router {
 				$params = array_slice($request_uri, 1);
 				static::$_called_action = $action = static::$_default_action;
 				Request::passRequest($controller, $action, $params);
-				// FlyHelper::helper('Routing Error', 'No route matches for <b>/' . $request_uri[0] . '</b>');
-			}
-			else {
+			} else {
 				static::$route_set = 1;
 				static::$_called_action = $action = $request_uri[1];
 				$params = array_slice($request_uri, 2);

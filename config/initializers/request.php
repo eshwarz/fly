@@ -25,7 +25,11 @@ class Request
 						$instance->before_filter();
 
 					// calling controller's action
-					call_user_func_array(array($instance, $action), $params);
+					try {
+						call_user_func_array(array($instance, $action), $params);
+					} catch (Exception $e) {
+						FlyHelper::helper('Exception occured!', $e);
+					}
 
 					// rendering the view if not rendered from the controller's action
 					if (!View::$_view_rendered) {
@@ -49,5 +53,3 @@ class Request
 	}
 
 }
-
-?>

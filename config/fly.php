@@ -113,4 +113,82 @@ class Fly {
 		return '<link rel="stylesheet" type="text/css" href="' . $file . '"/>';
 	}
 
+	static function errorHandler ($severity, $error, $file, $line)
+	{
+		switch ($severity) {
+			case E_WARNING:
+				$error_level = 'E_WARNING';
+				break;
+			case E_NOTICE:
+				$error_level = 'E_NOTICE';
+				return;
+				break;
+			case E_STRICT:
+				$error_level = 'E_STRICT';
+				break;
+			case E_ERROR:
+				$error_level = 'E_ERROR';
+				break;
+			case E_USER_ERROR:
+				$error_level = 'E_USER_ERROR';
+				break;
+			default:
+				$error_level = 'UNKNOWN';
+				break;
+		}
+
+		$message = content_tag('pre', $error, array('style' => 'color: #FF7B7B;'));
+		$message .= content_tag('pre', 'In file: ' . $file);
+		$message .= content_tag('pre', 'At line: ' . $line);
+
+		FlyHelper::helper('Severity: ' . $error_level . ', No: ' . $severity, $message);
+	}
+
+	static function shutdown ()
+	{
+		if ($error = error_get_last()) {
+			switch ($error['type']) {
+				case E_ERROR:
+					$error_level = 'ERROR';
+					break;
+				case E_WARNING:
+					$error_level = 'WARNING';
+					break;
+				case E_CORE_ERROR:
+					$error_level = 'CORE_ERROR';
+					break;
+				case E_USER_ERROR:
+					$error_level = 'USER_ERROR';
+					break;
+				case E_RECOVERABLE_ERROR:
+					$error_level = 'RECOVERABLE_ERROR';
+					break;
+				case E_CORE_WARNING:
+					$error_level = 'CORE_WARNING';
+					break;
+				case E_COMPILE_WARNING:
+					$error_level = 'COMPILE_WARNING';
+					break;
+				case E_PARSE:
+					$error_level = 'PARSE';
+					break;
+				case E_USER_NOTICE:
+					$error_level = 'E_USER_NOTICE';
+					break;
+				case E_NOTICE:
+					$error_level = 'E_NOTICE';
+					return;
+					break;
+				default:
+					$error_level = 'UNKNOWN';
+					break;
+			}
+			$message = content_tag('pre', b('Message: ' . $error['message']), array('style' => 'color: #FF7B7B;'));
+			$message .= content_tag('pre', b('In file: ') . $error['file']);
+			$message .= content_tag('pre', b('At line: ') . $error['line']);
+
+			FlyHelper::helper('Severity: ' . $error_level . ', Type: ' . $error['type'], $message);
+		}
+	}
+
 }

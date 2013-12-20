@@ -1,11 +1,11 @@
 <?php
-if ($_GET['failed'] == 1) {
+if (params('failed') == 1) {
 	?>
 	<center class="error">Invalid Email Address or Password!</center>
 	<?php
 }
 
-if ($_GET['success'] == 1) {
+if (params('success') == 1) {
 	?>
 	<center class="error">Succesfully Created New User!</center>
 	<?php

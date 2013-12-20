@@ -13,7 +13,7 @@ class RegistrationsController extends ApplicationController {
 	}
 
 	public function create() {
-		$user = $_POST['User'];
+		$user = params('User');
 		
 		// creating user with above fields
 		if ($user['password'] == $user['confirm_password']) {

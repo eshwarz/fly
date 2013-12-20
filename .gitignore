@@ -1,3 +1,4 @@
 temp/*.*php
+logs/
 app/assets/stylesheets/compiled/*.*css
 vendor/assets/stylesheets/compiled/*.*css

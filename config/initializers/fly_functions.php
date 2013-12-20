@@ -30,6 +30,14 @@ function link_css($file) {
 	return Fly::link_css($file);
 }
 
+function error_handler($severity, $error, $file, $line) {
+	return Fly::errorHandler($severity, $error, $file, $line);
+}
+
+function shutdown() {
+	return Fly::shutdown();
+}
+
 // Html globals
 function array_to_attributes ($array) {
 	return Html::array_to_attributes($array);
@@ -94,6 +102,10 @@ function params($key = null, $xss_filter = false) {
 
 function server($key = null) {
 	return Input::server($key);
+}
+
+function user_agent() {
+	return Input::userAgent();
 }
 
 function set_session($key, $value) {

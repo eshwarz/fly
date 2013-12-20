@@ -56,6 +56,16 @@ class TestController extends ApplicationController {
 		$locals['fruit'] = get_params('fruit');
 	}
 
+	public function arguments($id, $id2 = null)
+	{
+		if (!$id) {
+			redirect_to(test_path);
+		}
+		global $locals;
+		$locals['id'] = $id;
+		$locals['id2'] = $id2;
+	}
+
 	protected function trail()
 	{
 		// protected methods cannot be accessed from the browser

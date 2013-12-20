@@ -1,5 +1,5 @@
 <?php
-if ($_GET['email'] == 'exists') {
+if (params('email') == 'exists') {
 	?>
 	<center class="error">Email Address already exists!</center>
 	<?php
