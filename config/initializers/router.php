@@ -30,7 +30,7 @@ class Router {
 		$request_uri = Registry::get('uri');
 		$request_uri = explode('/', $request_uri);
 		$request_uri = array_slice($request_uri, 1);
-
+		
 		// case 1: check if it doesnt have any url extensions attached.
 		if (empty($request_uri[0])) {
 			static::$route_set = 1;
@@ -43,7 +43,18 @@ class Router {
 			Request::passRequest($controller, $action);
 		}
 
-		// case 2: loop through the routes matches.
+
+		// case 2: check if params are passed, this should not be assumed as controller or any other route
+		if (empty(self::$route_set)) {
+			// checking is first character is ?
+			if ($request_uri[0][0] == '?') {
+				self::$_called_controller = $controller = self::$_routes['root'][0];
+				self::$_called_action = $action = self::$_routes['root'][1];
+				Request::passRequest($controller, $action);
+			}
+		}
+
+		// case 3: loop through the routes matches.
 		if (empty(static::$route_set)) {
 			foreach (static::$_routes as $path => $route) {
 				if ($request_uri[0] == $path) {
@@ -56,7 +67,7 @@ class Router {
 			}
 		}
 
-		// case 3: controller / action
+		// case 4: controller / action
 		if (empty(static::$route_set)) {
 			static::$_called_controller = $controller = $request_uri[0];
 			if (empty($request_uri[1])) {

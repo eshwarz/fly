@@ -43,6 +43,7 @@ class Request
 					if (method_exists($instance, 'after_filter'))
 						$instance->after_filter();
 
+					exit();
 				}
 				else
 					FlyHelper::helper('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called or the function might not exists!');
