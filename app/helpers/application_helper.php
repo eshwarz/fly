@@ -100,4 +100,3 @@ function beautify_params($key, $value, $key_width = 200) {
 	";
 	return $item;
 }
-?>

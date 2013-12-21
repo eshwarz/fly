@@ -1,1 +1,0 @@
-<div>Wantedly created temp file</div>

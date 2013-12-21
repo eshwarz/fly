@@ -12,6 +12,16 @@ class User extends ActiveRecord\Model {
 		);
 	}
 
+	public static function getGender($sex) {
+		$sex = (int) $sex;
+		if ($sex == 1) {
+			return 'Male';
+		} elseif ($sex == 2) {
+			return 'Female';
+		} else {
+			return false;
+		}
+	}
 
 	public static function authenticate($options = NULL) {
 		

@@ -39,6 +39,7 @@ class TestController extends ApplicationController {
 	{
 		global $locals;
 		$locals['title'] = 'Fly PHP';
+		$locals['user'] = current_user();
 	}
 
 	public function helpers()
