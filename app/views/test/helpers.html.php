@@ -21,14 +21,14 @@ echo content_tag('div',
 <h3>Formatters</h3>
 
 <?php
- echo hr();
- echo strong('This is strong tag!');
- echo br();
- echo b('This is b tag!', array('style' => 'color: #C00'));
- echo br();
- echo i('This is i tag!');
- echo br();
- echo u('This is u tag!');
- echo br();
- echo em('This is em tag!');
+echo hr();
+echo strong('This is strong tag!');
+echo br();
+echo b('This is b tag!', array('style' => 'color: #C00'));
+echo br();
+echo i('This is i tag!');
+echo br();
+echo u('This is u tag!');
+echo br();
+echo em('This is em tag!');
 ?>

@@ -9,7 +9,8 @@ class TestController extends ApplicationController {
 	}
 
 	public function after_filter() {
-		// echo content_tag('div', 'Rendered View: ' . Router::$_called_controller . '/' . Router::$_called_action, array('class' => 'tc m10'));
+		echo content_tag('div', 'Rendered View: ' . Router::$_called_controller . '/' . Router::$_called_action, array('class' => 'tc m10'));
+		echo content_tag('div', 'Rendered Layout: ' . View::$_rendered_layout, array('class' => 'tc m10'));
 	}
 
 	public function index()
@@ -63,8 +64,11 @@ class TestController extends ApplicationController {
 			redirect_to(test_path);
 		}
 		global $locals;
+		$locals['title'] = 'Fly PHP';
 		$locals['id'] = $id;
 		$locals['id2'] = $id2;
+
+		render(array('view' => 'arguments', 'layout' => 'test'));
 	}
 
 	protected function trail()

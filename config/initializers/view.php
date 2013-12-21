@@ -4,6 +4,8 @@ class View {
 
 	public static $_view_rendered = false;
 
+	public static $_rendered_layout = 'application';
+
 	public static function render ($opts = array()) {
 		
 		// use can also pass layout as array element to render a view along with layout.
@@ -65,12 +67,17 @@ class View {
 		// layout preference (inside action > controller static variable > application)
 		$no_layout = false;
 		if (isset($opts['layout'])) {
+			if ($opts['layout'] == 'none') {
+				$no_layout = true;
+			}
 			$layout_file = $opts['layout'] . '.html.php';
+			self::$_rendered_layout = $opts['layout'];
 		} elseif (!empty($layout_from_controller)) {
 			if ($layout_from_controller == 'none') {
 				$no_layout = true;
 			}
 			$layout_file = $layout_from_controller . '.html.php';
+			self::$_rendered_layout = $layout_from_controller;
 		} else {
 			$layout_file = 'application.html.php';
 		}
