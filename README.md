@@ -23,6 +23,8 @@ Installation Notes:
 
 6. In apache httpd.conf file set "AllowOverride None" to "AllowOverride FileInfo" or to "AllowOverride All" if first doesn't work. This is makes sure that apache reads the .htaccess file in fly folder.
 
-7. Restart the apache server after the changes are made.
+7. Enable short tags by changing "short_open_tag = Off" to "short_open_tag = On" (without quotes) in php.ini.
 
-8. Configure your database in db/connection.php
+8. Restart the apache server after the changes are made.
+
+9. Configure your database in db/connection.php
