@@ -26,3 +26,11 @@ if (params('success') == 1) {
 		render (array('partial' => 'shared/authentication_links'));
 	?>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	setTimeout(function () {
+		Fly.validate.check();
+	}, 500);
+});
+</script>
