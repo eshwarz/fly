@@ -64,7 +64,7 @@ class TestController extends ApplicationController {
 			redirect_to(test_path);
 		}
 		global $locals;
-		$locals['title'] = 'Fly PHP';
+		$locals['title'] = 'Fly PHP - Arguments';
 		$locals['id'] = $id;
 		$locals['id2'] = $id2;
 
