@@ -54,6 +54,14 @@
 		echo link_to('Usage of Input Helpers', test_input_path, array('params' => array('id' => 1234567890, 'fruit' => 'apple')));
 		echo link_to('Arguments', test_arguments_ . 'show' . _ . 2 . _path);
 
+		$script = "
+			<script>
+				alert('XSS succeeded! Here is your cookie');
+				alert(document.cookie);
+			</script>
+		";
+		echo link_to('XSS Testing', '/test/xss_test', array('params' => array('q' => $script)));
+
 		echo content_tag('p', 'Paths to links can be given as mere constants and the convention is ' . b('controller') . ' followed by ' . b('_') . ' and ' . b('action') . ' followed by ' . b('_') . ' and ' . b('path'));
 		echo content_tag('p', 'Action is defaulted to index action in case of no action is given');
 		echo content_tag('pre', 'Syntax: '.b('controller_action_path'), array('style' => 'color: #00C;'));

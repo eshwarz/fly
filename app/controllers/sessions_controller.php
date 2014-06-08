@@ -27,7 +27,9 @@ class SessionsController extends ApplicationController {
 			set_session(USER_TIMEZONE_KEY, 123);
 			if ($credentials['remember'][0] == '1')
 			{
-				set_cookie(USER_SESSION_KEY, $uid, REMEMBER_ME_EXPIRE_TIME);
+				// encoding the $uid with concatenated salt
+				$encoded_uid = base64_encode($uid + USER_SESSION_KEY_SALT);
+				set_cookie(USER_SESSION_KEY, $encoded_uid, REMEMBER_ME_EXPIRE_TIME);
 				set_cookie(USER_TIMEZONE_KEY, 123, REMEMBER_ME_EXPIRE_TIME);
 			}
 			redirect_to(AFTER_SIGN_IN_PATH);

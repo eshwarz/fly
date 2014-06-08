@@ -6,19 +6,22 @@ class Input
 {
 
 	// acts as $_GET
-	static function getParams ($key = null, $xss_filter = false)
-	{
+	static function getParams ($key = null, $xss_filter = false) {
 		// getting only particular parameter if key is set otherwise return full array.
 		if (!empty($key)) {
-			return $_GET[$key];
+			$value = $_GET[$key];
+			// handling xss issues
+			if ($xss_filter) {
+				$value = self::xss_validate($value);
+			}
+			return $value;
 		} else {
 			return $_GET;
 		}
 	}
 
 	// acts as $_POST
-	static function postParams ($key = null, $xss_filter = false)
-	{
+	static function postParams ($key = null, $xss_filter = false) {
 		// getting only particular parameter if key is set otherwise return full array.
 		if (!empty($key)) {
 			return $_POST[$key];
@@ -28,8 +31,7 @@ class Input
 	}
 
 	// acts as $_REQUEST
-	static function params ($key = null, $xss_filter = false)
-	{
+	static function params ($key = null, $xss_filter = false) {
 		// getting only particular parameter if key is set otherwise return full array.
 		if (!empty($key)) {
 			$param = isset($_POST[$key]) ? self::postParams($key, $xss_filter) : self::getParams($key, $xss_filter);
@@ -39,8 +41,7 @@ class Input
 		}
 	}
 
-	static function server ($key = null)
-	{
+	static function server ($key = null) {
 		// getting only particular parameter if key is set otherwise return full array.
 		if (!empty($key)) {
 			return $_SERVER[$key];
@@ -50,9 +51,13 @@ class Input
 	}
 
 	// returns user agent
-	static function userAgent ()
-	{
+	static function userAgent () {
 		return $_SERVER['HTTP_USER_AGENT'];
+	}
+
+	static function xss_validate ($str) {
+		$str = str_replace(array('<', '>'), array('&lt;', '&gt;'), $str);
+		return $str;
 	}
 
 

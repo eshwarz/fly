@@ -81,4 +81,10 @@ class TestController extends ApplicationController {
 		// this method throws error as it fails to load the view file
 	}
 
+	public function xss_test() {
+		global $locals;
+		$l['title'] = 'XSS Testing';
+		$locals = $l;
+	}
+
 }

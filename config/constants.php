@@ -7,6 +7,7 @@ defined('HTTP_HOST') or define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 define('USER_SESSION_KEY', 'fly_user');
 define('USER_TIMEZONE_KEY', 'fly_timezone');
 define('AFTER_SIGN_IN_PATH', 'test_path');
+define('USER_SESSION_KEY_SALT', '+0p53cR3+');
 
 // less stylesheets are included on development environment, this can be set to true to enable less.watch() mode
 // can be set to false if less takes lots of time to compile

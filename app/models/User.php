@@ -27,20 +27,10 @@ class User extends ActiveRecord\Model {
 		
 		$flag = static::checkOptions($options);
 		if ($flag == 1) {
-			$user_session_cookie = cookie(USER_SESSION_KEY);
-			$user_timezone_cookie = cookie(USER_TIMEZONE_KEY);
-			if (isset($user_session_cookie) && isset($user_timezone_cookie))
-			{
-				set_session(USER_SESSION_KEY, $user_session_cookie);
-				set_session(USER_TIMEZONE_KEY, $user_timezone_cookie);
-			}
-
 			$uid = session(USER_SESSION_KEY);
-
-			if (!$uid)
-			{
-				if (params('redirect') == true)
-				{
+			// redirecting in case of invalid session
+			if (!$uid || $uid == 0) {
+				if (params('redirect') == true) {
 					$url = "http://".server('HTTP_HOST').server('REQUEST_URI');
 					set_session('redirect', $url);
 				}
