@@ -11,7 +11,7 @@ define('USER_SESSION_KEY_SALT', '+0p53cR3+');
 
 // less stylesheets are included on development environment, this can be set to true to enable less.watch() mode
 // can be set to false if less takes lots of time to compile
-defined('LESS_STYLE_ON_DEV') or define('LESS_STYLE_ON_DEV', true);
+defined('LESS_STYLE_ON_DEV') or define('LESS_STYLE_ON_DEV', false);
 
 // cookie constants
 define('COOKIE_PATH', '/');
