@@ -1,6 +1,6 @@
 <?php
 
-echo content_tag('h2', 'View source code to understand - app/views/test/index.html.php', array('align' => 'center'));
+echo content_tag('h2', 'View source code to understand - app/views/test/input.html.php', array('align' => 'center'));
 echo content_tag('h3', 'Parmeters');
 
 var_dump($params);
