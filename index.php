@@ -48,3 +48,7 @@ if (!empty($redirect_url)) {
 Registry::set('uri', $uri);
 
 Router::dispatch();
+
+
+// change 1
+// change 2
