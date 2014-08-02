@@ -1,10 +1,10 @@
-<?php
-if (params('email') == 'exists') {
-	?>
+<? if (params('email') == 'exists'): ?>
 	<center class="error">Email Address already exists!</center>
-	<?php
-}
-?>
+<? endif ?>
+
+<? if (params('failed') == '1'): ?>
+	<center class="error">Failed to create an account!</center>
+<? endif ?>
 
 <h2 class="center">Sign Up</h2>
 

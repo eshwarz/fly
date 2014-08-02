@@ -31,6 +31,6 @@ if (params('success') == 1) {
 $(document).ready(function(){
 	setTimeout(function () {
 		Fly.validate.check();
-	}, 500);
+	}, 1000);
 });
 </script>

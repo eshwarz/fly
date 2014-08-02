@@ -31,7 +31,13 @@ class View {
 		elseif (!empty($opts['view'])) {
 			$controller = Router::$_called_controller;
 			$action = $opts['view'];
-			static::yield_view($controller, $action, $opts);
+			// rendering the view only in case if view is not set to none
+			if ($action == 'none') {
+				self::$_view_rendered = true;
+			} else {
+				static::yield_view($controller, $action, $opts);
+			}
+
 		}
 
 		// partial (used in views). Ex: View::render( array( 'partial' => 'xxx' ) )

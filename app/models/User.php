@@ -2,7 +2,13 @@
 
 class User extends ActiveRecord\Model {
 	
-	static $validates_presence_of = array(array('first_name'), array('last_name'), array('email'), array('password'), array('sex'));
+	static $validates_presence_of = array(
+		array('first_name', 'message' => 'First Name is required!'),
+		array('last_name', 'message' => 'Last Name is required!'),
+		array('email', 'message' => 'Email is required!'),
+		array('password', 'message' => 'Password is required!'),
+		array('sex', 'message' => 'Sex is required!')
+	);
 	static $validates_uniqueness_of = array(array('email'));
 
 	public static function genders() {
