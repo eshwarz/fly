@@ -84,6 +84,7 @@ class TestController extends ApplicationController {
 	public function view_test()
 	{
 		// this method throws error as it fails to load the view file
+		// asdf();
 		// render(array('view' => 'none'));
 	}
 

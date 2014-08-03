@@ -46,10 +46,10 @@ class Request
 					exit();
 				}
 				else
-					FlyHelper::not_found('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called or the function might not exists!');
+					FlyHelper::notFound('Function error', '<b>' . $class . '::' . $action . '</b> cannot be called or the function might not exists!');
 			}
 			else
-				FlyHelper::not_found('Controller error', '<b>' . $class . '</b> does not exists.');
+				FlyHelper::notFound('Controller error', '<b>' . $class . '</b> does not exists.');
 		}
 	}
 

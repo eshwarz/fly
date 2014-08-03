@@ -10,8 +10,6 @@ function handle_errors () {
 	ini_set('display_errors', '0');
 
 	// custom error display in case of any errors
-	if (ENV != 'production') {
-		set_error_handler('error_handler');
-		register_shutdown_function('shutdown');
-	}
+	set_error_handler('error_handler');
+	register_shutdown_function('shutdown');
 }

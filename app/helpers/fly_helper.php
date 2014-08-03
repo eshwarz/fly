@@ -14,12 +14,22 @@ class FlyHelper {
 		exit();
 	}
 
-	public static function not_found ($header, $message) {
+	public static function notFound ($header, $message) {
 		if (ENV == 'production') {
-			self::helper('404 - Page Not Found!', 'Sorry, The page you are trying the view is not found!');
+			self::helper(
+				content_tag('h3', '404 - Page Not Found!', array('style' => 'text-align: center;')),
+				content_tag('h2', 'Sorry, The page you are trying the view is not found!', array('style' => 'text-align: center;'))
+			);
 		} else {
 			self::helper($header, $message);
 		}
+	}
+
+	public static function emergencyMessage () {
+		self::helper(
+			content_tag('h3', ':\'( Something went wrong!', array('style' => 'text-align: center;')),
+			content_tag('h2', 'Sorry, Something went wrong and we are trying to fix it!', array('style' => 'text-align: center;'))
+		);
 	}
 
 }

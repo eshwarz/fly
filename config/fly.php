@@ -141,7 +141,12 @@ class Fly {
 		$message .= content_tag('pre', 'In file: ' . $file);
 		$message .= content_tag('pre', 'At line: ' . $line);
 
-		FlyHelper::helper('Severity: ' . $error_level . ', No: ' . $severity, $message);
+		// thworing error in case of non prod ENV
+		if (ENV == 'production') {
+			FlyHelper::emergencyMessage();
+		} else {
+			FlyHelper::helper('Severity: ' . $error_level . ', No: ' . $severity, $message);
+		}
 	}
 
 	static function shutdown ()
@@ -187,7 +192,13 @@ class Fly {
 			$message .= content_tag('pre', b('In file: ') . $error['file']);
 			$message .= content_tag('pre', b('At line: ') . $error['line']);
 
-			FlyHelper::helper('Severity: ' . $error_level . ', Type: ' . $error['type'], $message);
+			// thworing error in case of non prod ENV
+			if (ENV == 'production') {
+				FlyHelper::emergencyMessage();
+			} else {
+				FlyHelper::helper('Severity: ' . $error_level . ', Type: ' . $error['type'], $message);
+			}
+
 		}
 	}
 

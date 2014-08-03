@@ -17,7 +17,7 @@ class View {
 		}
 		
 		if ( (!empty($opts['controller']) && !empty($opts['view'])) || (!empty($opts['controller']) && !empty($opts['partial'])) || (!empty($opts['partial']) && !empty($opts['view'])) || (count($opts) < 1) ) {
-			FlyHelper::not_found('Cannot call render!', Code::render());
+			FlyHelper::notFound('Cannot call render!', Code::render());
 		}
 
 		// controller/action with locals. Ex: View::render( array( 'controller' => 'xxx', 'action' => 'xxx' ) )
@@ -99,7 +99,7 @@ class View {
 			if (file_exists($view_path)) {
 				$view_content = file_get_contents($view_path);
 			} else {
-				FlyHelper::not_found('View file not found!', 'Please create a view file in the following place: ' . content_tag('pre', 'app/views/' . $controller . '/' . $action . '.html.php'));
+				FlyHelper::notFound('View file not found!', 'Please create a view file in the following place: ' . content_tag('pre', 'app/views/' . $controller . '/' . $action . '.html.php'));
 			}
 		}
 
