@@ -76,9 +76,15 @@ class TestController extends ApplicationController {
 		// protected methods cannot be accessed from the browser
 	}
 
+	private function trail1()
+	{
+		// private methods cannot be accessed from the browser
+	}
+
 	public function view_test()
 	{
 		// this method throws error as it fails to load the view file
+		// render(array('view' => 'none'));
 	}
 
 	public function xss_test() {

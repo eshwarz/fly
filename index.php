@@ -4,7 +4,7 @@
  *
  * @author Eshwar Chandra Y K <eshwarcc@gmail.com>; <mail@eshwar.me>
  * @link http://www.pavsesh.com/
- * @copyright 2008-2013 FlyPHP
+ * @copyright 2008-2014 FlyPHP
  * @license http://www.pavsesh.com/license/
  * @package system
  * @since 1.0
@@ -33,9 +33,9 @@ require_all('app/models/');
 require_once 'config/routes.php';
 require_all('app/helpers/');
 
-debug();
-set_error_handler('error_handler');
-register_shutdown_function('shutdown');
+// error handling
+handle_errors();
+
 
 
 $redirect_url = server('REDIRECT_URL');

@@ -1,7 +1,7 @@
 <?php
-if (HTTP_HOST == 'fly' || HTTP_HOST == 'local.fly.com'){
+if (HTTP_HOST == 'local.fly.com'){
 	define('ENV', 'development');
-} else {
+} else if (HTTP_HOST == 'fly') {
 	define('ENV', 'production');
 }
 ?>
