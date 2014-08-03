@@ -71,6 +71,12 @@ class TestController extends ApplicationController {
 		render(array('view' => 'arguments', 'layout' => 'test'));
 	}
 
+	public function xss_test() {
+		global $locals;
+		$l['title'] = 'XSS Testing';
+		$locals = $l;
+	}
+	
 	protected function trail()
 	{
 		// protected methods cannot be accessed from the browser
@@ -84,14 +90,8 @@ class TestController extends ApplicationController {
 	public function view_test()
 	{
 		// this method throws error as it fails to load the view file
-		// asdf();
 		// render(array('view' => 'none'));
 	}
 
-	public function xss_test() {
-		global $locals;
-		$l['title'] = 'XSS Testing';
-		$locals = $l;
-	}
 
 }
