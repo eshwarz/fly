@@ -7,7 +7,7 @@
 
 class Fly {
 
-	private static $_version = 1.1;
+	private static $_version = 1.2;
 
 	static function version ()
 	{
