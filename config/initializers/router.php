@@ -88,7 +88,10 @@ class Router {
 	public static function routeByConstant($constant) {
 		if (strpos($constant, '/') === false && strpos($constant, '#') === false) {
 			$url_string = str_replace('_path', '', $constant);
-			$url = str_replace('_', '/', $url_string);
+			// putting a temporary pipe for constructing "_" for "__"
+			$url = str_replace('__', '|', $url_string);
+			$url = str_replace('_', '/', $url);
+			$url = str_replace('|', '_', $url);
 			return '/'.$url;
 		}
 		return $constant;

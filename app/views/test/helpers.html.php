@@ -7,6 +7,7 @@ echo link_to('posts_test_path', posts_test_path);
 echo nl2br("\n");
 echo link_to('test_profile_path', test_profile_path);
 echo nl2br("\n");
+echo link_to('test_user__profile_path', test_user__profile_path);
 ?>
 
 <h3>Usage of Tag Helpers</h3>
