@@ -18,7 +18,7 @@ class FlyHelper {
 		if (ENV == 'production') {
 			self::helper(
 				content_tag('h3', '404 - Page Not Found!', array('style' => 'text-align: center;')),
-				content_tag('h2', 'Sorry, The page you are trying the view is not found!', array('style' => 'text-align: center;'))
+				content_tag('h2', 'Sorry, The page you are trying to view is not found!', array('style' => 'text-align: center;'))
 			);
 		} else {
 			self::helper($header, $message);

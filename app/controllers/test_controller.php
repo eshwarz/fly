@@ -3,6 +3,11 @@
 class TestController extends ApplicationController {
 
 	// public static $layout = 'test';
+	
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
 	public function before_filter() {
 		User::authenticate(array('only' => array('profile')));

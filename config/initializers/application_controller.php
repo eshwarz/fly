@@ -3,6 +3,15 @@
 class ApplicationController {
 
 	function __construct() {
+		self::set_user_session();
+	}
+
+	/**
+	 * Sets the user session
+	 */
+	
+	private function set_user_session()
+	{
 		// getting the user details from cookie in case of any
 		$user_session_cookie = cookie(USER_SESSION_KEY);
 		$user_timezone_cookie = cookie(USER_TIMEZONE_KEY);
@@ -16,8 +25,6 @@ class ApplicationController {
 				set_session(USER_TIMEZONE_KEY, $user_timezone_cookie);
 			}
 		}
-
-
 	}
 
 }
