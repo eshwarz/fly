@@ -94,8 +94,12 @@ class TestController extends ApplicationController {
 
 	public function view_test()
 	{
-		// this method throws error as it fails to load the view file
 		// render(array('view' => 'none'));
+	}
+
+	public function newFunction()
+	{
+		// does nothing 
 	}
 
 
